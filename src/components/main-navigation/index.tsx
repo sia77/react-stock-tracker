@@ -1,0 +1,92 @@
+import { Link } from 'react-router-dom';
+import { useEffect, useRef, useState } from 'react';
+
+
+
+const MainNavigation = () => {
+
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const menuRef = useRef<HTMLDivElement>(null);
+    const iconRef = useRef<HTMLDivElement>(null);
+
+    useEffect(() => {
+        const handleClickOutside = (event: MouseEvent) => {
+          const target = event.target as Node;
+    
+          const clickedInsideMenu = menuRef.current?.contains(target);
+          const clickedMenuIcon = iconRef.current?.contains(target);
+    
+          if (!clickedInsideMenu && !clickedMenuIcon) {
+            setIsMenuOpen(false);
+          }
+        };
+    
+        document.addEventListener('click', handleClickOutside);
+    
+        return () => {
+          document.removeEventListener('click', handleClickOutside);
+        };
+      }, []);
+
+    const toggleMenu = () => {
+        setIsMenuOpen(prev => !prev);
+    };
+
+    const MobileMenu = () => {
+        return (
+            <div 
+                ref={menuRef} 
+                className="list-none flex flex-col bg-stockTrackerBlack text-white menu space-y-4 md:hidden p-4 absolute top-16 left-0 w-full z-[9999]" >
+
+                <ul > 
+                    <li><Link className="text-white no-underline" onClick={toggleMenu} to ="">Home</Link></li>
+                    <li><Link className="text-white no-underline" onClick={toggleMenu} to ="/about">About</Link></li>
+                    <li><Link className="text-white no-underline" onClick={toggleMenu} to ='/services'>Services</Link></li>
+                    <li><Link className="text-white no-underline" onClick={toggleMenu} to ='/news'>Top News</Link></li>
+                    {/* <li><Link className="text-white no-underline" to = '/contact'>Contact Us</Link></li>              */}
+                </ul> 
+            </div>
+        )
+    }
+
+
+    return (
+        <>
+            <div className="bg-stockTrackerBlack text-white w-full h-[53px] flex justify-center">
+                <nav className="w-[1220px] mx-auto flex justify-between items-center outline-2 outline-red-500/50">
+                    <div>
+                        <Link to="" className="text-white no-underline">
+                            <img src="/menu-logo.svg" alt="Logo" />
+                        </Link>
+                    </div>
+                    <ul className="list-none flex space-x-5 invisible md:visible"> 
+                                 
+                        <li><Link className="text-white no-underline" to = "">Home</Link></li>
+                        <li><Link className="text-white no-underline" to = "/about">About</Link></li>
+                        <li><Link className="text-white no-underline" to = '/services'>Services</Link></li>
+                        <li><Link className="text-white no-underline" to = '/news'>Top News</Link></li>
+                        {/* <li><Link className="text-white no-underline" to = '/contact'>Contact Us</Link></li>              */}
+                    </ul>
+                    <div className="text-white  mr-4">
+                        <div className="hidden md:block">
+                            <Link className="text-white no-underline invisible md:visible" to = '/sign up'>Sign Up</Link>
+                        </div>
+                        {/* Hamburger icon for mobile */}
+                        <div className = "md:hidden" ref={iconRef} onClick={toggleMenu}>
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="size-8">
+                                <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+                            </svg>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+            {isMenuOpen && <MobileMenu />}          
+        
+        </>
+        
+    )
+}
+
+
+export default MainNavigation
+

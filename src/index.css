@@ -1,0 +1,16 @@
+@import "tailwindcss";
+
+
+@theme{
+  --color-stockTrackerBlack: #0A101C;
+  --color-stockTrackerBlackLight: #596479;
+  --color-stockTrackerBlue:#1382aa;
+  --color-stockTrackerRed:#d91818;
+}
+
+
+
+html, body { height:100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+
