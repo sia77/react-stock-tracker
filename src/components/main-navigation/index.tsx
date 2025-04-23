@@ -68,7 +68,7 @@ const MainNavigation = () => {
                         {/* <li><Link className="text-white no-underline" to = '/contact'>Contact Us</Link></li>              */}
                     </ul>
                     <div className="text-white  mr-4">
-                        <div className="hidden md:block">
+                        <div className="hidden ">
                             <Link className="text-white no-underline invisible md:visible" to = '/sign up'>Sign Up</Link>
                         </div>
                         {/* Hamburger icon for mobile */}
