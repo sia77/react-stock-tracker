@@ -53,7 +53,7 @@ const MainNavigation = () => {
     return (
         <>
             <div className="bg-stockTrackerBlack text-white w-full h-[53px] flex justify-center">
-                <nav className="w-[1220px] mx-auto flex justify-between items-center outline-2 outline-red-500/50">
+                <nav className="w-[1220px] mx-auto flex justify-between items-center">
                     <div>
                         <Link to="" className="text-white no-underline">
                             <img src="/menu-logo.svg" alt="Logo" />
@@ -67,8 +67,8 @@ const MainNavigation = () => {
                         <li><Link className="text-white no-underline" to = '/news'>Top News</Link></li>
                         {/* <li><Link className="text-white no-underline" to = '/contact'>Contact Us</Link></li>              */}
                     </ul>
-                    <div className="text-white  mr-4">
-                        <div className="hidden ">
+                    <div className="text-white mr-4">
+                        <div className="hidden">
                             <Link className="text-white no-underline invisible md:visible" to = '/sign up'>Sign Up</Link>
                         </div>
                         {/* Hamburger icon for mobile */}
