@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { useEffect, useRef, useState } from 'react';
+import MobileMenu from './MobileMenu';
 
 
 
@@ -32,24 +33,6 @@ const MainNavigation = () => {
         setIsMenuOpen(prev => !prev);
     };
 
-    const MobileMenu = () => {
-        return (
-            <div 
-                ref={menuRef} 
-                className="list-none flex flex-col bg-stockTrackerBlack text-white menu space-y-4 md:hidden p-4 absolute top-16 left-0 w-full z-[9999]" >
-
-                <ul > 
-                    <li><Link className="text-white no-underline" onClick={toggleMenu} to ="">Home</Link></li>
-                    <li><Link className="text-white no-underline" onClick={toggleMenu} to ="/about">About</Link></li>
-                    <li><Link className="text-white no-underline" onClick={toggleMenu} to ='/services'>Services</Link></li>
-                    <li><Link className="text-white no-underline" onClick={toggleMenu} to ='/news'>Top News</Link></li>
-                    {/* <li><Link className="text-white no-underline" to = '/contact'>Contact Us</Link></li>              */}
-                </ul> 
-            </div>
-        )
-    }
-
-
     return (
         <>
             <div className="bg-stockTrackerBlack text-white w-full h-[53px] flex justify-center">
@@ -59,8 +42,7 @@ const MainNavigation = () => {
                             <img src="/menu-logo.svg" alt="Logo" />
                         </Link>
                     </div>
-                    <ul className="list-none flex space-x-5 invisible md:visible"> 
-                                 
+                    <ul className="list-none flex space-x-5 invisible md:visible">                                 
                         <li><Link className="text-white no-underline" to = "">Home</Link></li>
                         <li><Link className="text-white no-underline" to = "/about">About</Link></li>
                         <li><Link className="text-white no-underline" to = '/services'>Services</Link></li>
@@ -80,7 +62,7 @@ const MainNavigation = () => {
                     </div>
                 </nav>
             </div>
-            {isMenuOpen && <MobileMenu />}          
+            {isMenuOpen && <MobileMenu toggleMenu = {toggleMenu} iconRef ={iconRef} />}          
         
         </>
         

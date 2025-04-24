@@ -1,20 +1,18 @@
-// import { useState } from 'react'
-// import reactLogo from './assets/react.svg'
-// import viteLogo from '/vite.svg'
 import './App.css'
+import Footer from './components/Footer'
 import MainNavigation from './components/main-navigation'
+import SearchBar from './components/SearchBar'
 import AppRoutes from './routes/AppRoutes'
 
 
 function App() {
-  //const [count, setCount] = useState(0)
 
   return (
-    <>
+    <div className='flex flex-col min-h-screen'>
 
       <header>
         <MainNavigation/>
-        {/* <app-search-bar /> */}
+        <SearchBar />
       </header>
   
       <main className="flex-1 mx-3">
@@ -25,8 +23,8 @@ function App() {
         
       </main>
       
-      {/* <app-footer></app-footer> */}
-    </>
+      <Footer />
+    </div>
   )
 }
 
