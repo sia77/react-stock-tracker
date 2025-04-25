@@ -38,11 +38,11 @@ const Home = () => {
   
     return (
         <div className="flex justify-center">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 w-[300px] md:w-[600px] lg:w-[1220px]">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 w-[300px] md:w-[630px] lg:w-[1220px]">
 
-                <AssetPerformanceCard title="Most Active" data={data.mostActive} maxItems={MAX_NEW_ITEM} alignment={'justify-self-start'} />
-                <AssetPerformanceCard title="Most gainers" data={data.gainers} maxItems={MAX_NEW_ITEM} alignment={'justify-self-center'} />
-                <AssetPerformanceCard title="Most losers" data={data.losers} maxItems={MAX_NEW_ITEM} alignment={'justify-self-end'}/>
+                <AssetPerformanceCard title="Most Active" data={data.mostActive} maxItems={MAX_NEW_ITEM} alignment={'md:justify-self-start'} />
+                <AssetPerformanceCard title="Most Gainers" data={data.gainers} maxItems={MAX_NEW_ITEM} alignment={'md:justify-self-center'} />
+                <AssetPerformanceCard title="Most Losers" data={data.losers} maxItems={MAX_NEW_ITEM} alignment={'justify-self-auto lg:justify-self-end'}/>
 
             </div>
         </div>
