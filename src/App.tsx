@@ -1,3 +1,4 @@
+import { ToastContainer } from 'react-toastify'
 import './App.css'
 import Footer from './components/Footer'
 import MainNavigation from './components/main-navigation'
@@ -8,23 +9,27 @@ import AppRoutes from './routes/AppRoutes'
 function App() {
 
   return (
-    <div className='flex flex-col min-h-screen'>
+    <>
+      <ToastContainer position="top-center" />
+      <div className='flex flex-col min-h-screen'>
 
-      <header>
-        <MainNavigation/>
-        <SearchBar />
-      </header>
-  
-      <main className="flex-1 mx-3">
+        <header>
+          <MainNavigation/>
+          <SearchBar />
+        </header>
+    
+        <main className="flex-1 mx-3">
 
-        <div className="max-w-[1220px] mx-auto py-3">      
-          <AppRoutes />
-        </div>
+          <div className="max-w-[1220px] mx-auto py-3">      
+            <AppRoutes />
+          </div>
+          
+        </main>
         
-      </main>
-      
-      <Footer />
-    </div>
+        <Footer />
+      </div>
+    </>
+
   )
 }
 

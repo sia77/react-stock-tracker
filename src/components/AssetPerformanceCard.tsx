@@ -20,7 +20,7 @@ export const AssetPerformanceCard = ({title, data, maxItems, alignment}:AssetLis
             </CardHeader>
             <CardContent className="px-2">
                 {   
-                    data.slice(0, maxItems).map((item) => (
+                    data?.slice(0, maxItems).map((item) => (
 
                         <div key={item.ticker} className="flex justify-between mb-[12px] text-[14px] px-2 transition-colors duration-200 hover:bg-gray-100">
                             <div >{item.ticker}</div>
