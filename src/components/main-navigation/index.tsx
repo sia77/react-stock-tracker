@@ -45,7 +45,7 @@ const MainNavigation = () => {
                     <ul className="list-none flex space-x-5 invisible text-sm md:visible">                                 
                         <li><Link className="text-white no-underline" to = "">Home</Link></li>
                         <li><Link className="text-white no-underline" to = "/about">About</Link></li>
-                        <li><Link className="text-white no-underline" to = '/services'>Services</Link></li>
+                        {/* <li><Link className="text-white no-underline" to = '/services'>Services</Link></li> */}
                         <li><Link className="text-white no-underline" to = '/news'>Top News</Link></li>
                         {/* <li><Link className="text-white no-underline" to = '/contact'>Contact Us</Link></li>              */}
                     </ul>

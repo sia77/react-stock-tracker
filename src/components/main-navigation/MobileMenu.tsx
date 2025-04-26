@@ -9,7 +9,7 @@ const MobileMenu = (props:any) => {
             <ul className="text-sm"> 
                 <li className="mb-3"><Link className="text-white no-underline" onClick={props.toggleMenu} to ="">Home</Link></li>
                 <li className="mb-3"><Link className="text-white no-underline" onClick={props.toggleMenu} to ="/about">About</Link></li>
-                <li className="mb-3"><Link className="text-white no-underline" onClick={props.toggleMenu} to ='/services'>Services</Link></li>
+                {/* <li className="mb-3"><Link className="text-white no-underline" onClick={props.toggleMenu} to ='/services'>Services</Link></li> */}
                 <li className=""><Link className="text-white no-underline" onClick={props.toggleMenu} to ='/news'>Top News</Link></li>
                 {/* <li><Link className="text-white no-underline" to = '/contact'>Contact Us</Link></li>              */}
             </ul> 
