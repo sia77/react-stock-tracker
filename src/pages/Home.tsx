@@ -1,6 +1,5 @@
 
-import React, { useEffect, useState } from "react";
-import { Card, CardContent, CardHeader } from "@/components/ui/card";
+import { useEffect, useState } from "react";
 import axios from "axios";
 import { assetPerformance } from "@/Interfaces/marketPerformance";
 import { AssetPerformanceCard } from "@/components/AssetPerformanceCard";

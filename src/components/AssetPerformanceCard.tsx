@@ -22,7 +22,7 @@ export const AssetPerformanceCard = ({title, data, maxItems, alignment}:AssetLis
                 {   
                     data.slice(0, maxItems).map((item) => (
 
-                        <div key={item.ticker} className="flex justify-between mb-[12px] text-[14px] px-4 transition-colors duration-200 hover:bg-gray-100">
+                        <div key={item.ticker} className="flex justify-between mb-[12px] text-[14px] px-2 transition-colors duration-200 hover:bg-gray-100">
                             <div >{item.ticker}</div>
                             <div className="flex items-center gap-1">
                                 {item.delta > 0 ? (

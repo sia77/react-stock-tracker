@@ -42,7 +42,7 @@ const MainNavigation = () => {
                             <img src="/menu-logo.svg" alt="Logo" />
                         </Link>
                     </div>
-                    <ul className="list-none flex space-x-5 invisible md:visible">                                 
+                    <ul className="list-none flex space-x-5 invisible text-sm md:visible">                                 
                         <li><Link className="text-white no-underline" to = "">Home</Link></li>
                         <li><Link className="text-white no-underline" to = "/about">About</Link></li>
                         <li><Link className="text-white no-underline" to = '/services'>Services</Link></li>
@@ -50,7 +50,7 @@ const MainNavigation = () => {
                         {/* <li><Link className="text-white no-underline" to = '/contact'>Contact Us</Link></li>              */}
                     </ul>
                     <div className="text-white mr-4">
-                        <div className="hidden">
+                        <div className="hidden text-sm">
                             <Link className="text-white no-underline invisible md:visible" to = '/sign up'>Sign Up</Link>
                         </div>
                         {/* Hamburger icon for mobile */}
@@ -62,13 +62,10 @@ const MainNavigation = () => {
                     </div>
                 </nav>
             </div>
-            {isMenuOpen && <MobileMenu toggleMenu = {toggleMenu} iconRef ={iconRef} />}          
-        
+            {isMenuOpen && <MobileMenu toggleMenu = {toggleMenu} iconRef ={iconRef} />}
         </>
-        
     )
 }
-
 
 export default MainNavigation
 
