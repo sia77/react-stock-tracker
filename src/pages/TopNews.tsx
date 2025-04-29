@@ -1,13 +1,8 @@
-import { useEffect, useState } from "react";
-import axios from 'axios';
-import { TopNewsItem } from "@/Interfaces/news";
 import { useTopNewsService } from "@/hooks/useTopNewsService";
 import { ArrowRight } from "lucide-react";
 
 const TopNews = () => {
-
-    // const [newsList, setNewsList] = useState<TopNewsItem[]>([]);
-
+    
     const {newsList, loading, error} = useTopNewsService();
 
     if (loading) return <div  className="text-center text-[#596479] text-lg mt-10">Loading...</div>;
