@@ -3,14 +3,10 @@ import { ArrowRight } from "lucide-react";
 
 const TopNews = () => {
 
-    const {shortList, loading, error, currentPage, showMoreItems} = useTopNewsService();
+    const {shortList, loading, error, showMoreItems} = useTopNewsService();
 
     if (loading) return <div  className="text-center text-[#596479] text-lg mt-10">Loading...</div>;
     if (error) return <div  className="text-center text-stockTrackerRed text-lg mt-10">{error}</div>;
-
-    // const showMoreItems = () => {
-    //     return currentPage+1;
-    // }
     
     return (
         <div className="max-w-8xl mx-auto">
