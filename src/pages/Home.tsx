@@ -5,12 +5,10 @@ const Home = () => {
 
     const MAX_NEW_ITEM:number = 6;
 
-    const {data, loading, error } = useStockPerformanceService();
- 
+    const {data, loading, error } = useStockPerformanceService(); 
   
-    if (loading) return <div>Loading...</div>;
-    if (error) return <div>Error: {error}</div>;
-
+    if (loading) return <div  className="text-center text-[#596479] text-lg mt-10">Loading...</div>;
+    if (error) return <div  className="text-center text-stockTrackerRed text-lg mt-10">{error}</div>;
 
     return (
         <div className="flex justify-center">

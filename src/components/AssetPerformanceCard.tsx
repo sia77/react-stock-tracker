@@ -14,8 +14,8 @@ export const AssetPerformanceCard = ({title, data, maxItems, alignment}:AssetLis
 
     return (
 
-        <Card className={`w-[300px] rounded-[3px] py-0 gap-4 shadow-none ${alignment}`}>
-            <CardHeader className={`bg-stockTrackerBlack text-white p-[16px] gap-0`}>
+        <Card className={`w-[300px] rounded-xl py-0 gap-4 shadow-none ${alignment}`}>
+            <CardHeader className={`bg-stockTrackerBlack text-white p-[16px] gap-0 rounded-xl`}>
                 <h4 className="text-white">{title}</h4>                     
             </CardHeader>
             <CardContent className="px-2">
@@ -34,9 +34,6 @@ export const AssetPerformanceCard = ({title, data, maxItems, alignment}:AssetLis
                                     {item.delta > 0 ? '+' : ''}<CountUp end={item.delta} duration={3} decimals={2} suffix="%" />
                                 </span>
                             </div>
-                            {/* <div className={item.delta > 0 ? 'text-green-600':'text-stockTrackerRed'}> 
-                                {item.delta > 0 ? '+':''}{item.delta}%
-                            </div> */}
                         </div>   
                     ))
                 }
