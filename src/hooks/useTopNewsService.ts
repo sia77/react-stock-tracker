@@ -15,8 +15,12 @@ export const useTopNewsService = () => {
             const fetchData = async () => {
 
                 try{
-                    const newsList = await topNewsService()
-                    setNewsList(newsList);
+                    const fetchedItems = await topNewsService();
+                    const newItems = fetchedItems.map(item => ({ ...item, animated: false }));
+                    setNewsList(prevList => [...prevList, ...newItems]);
+
+                    console.log("fetchedItems: ", fetchedItems);
+                    
                 }catch(err){
                     console.error(err);
                     setError("Failed to fetch top news");
@@ -28,11 +32,18 @@ export const useTopNewsService = () => {
             fetchData();
         }, []);
 
+        console.log("newsList: ", newsList);
+
         const showMoreItems = () => {
+            setNewsList(prevList =>
+                prevList.map(item => ({ ...item, animated: true }))
+              );
             setCurrentPage(currentPage => currentPage + 1 )
         }        
 
         const shortList = newsList.slice(0, currentPage * 10);
+
+        console.log("shortList: ", shortList );
 
         return { shortList, loading, error, currentPage, showMoreItems };
 }

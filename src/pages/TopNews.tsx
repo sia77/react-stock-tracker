@@ -15,7 +15,7 @@ const TopNews = () => {
                 shortList.map((item, index) => (
                 <div
                 key={item.id}
-                className="flex items-center bg-gradient-to-r from-[#f0f4f8] to-[#e8f1f8] rounded-xl p-5 mb-5 shadow-md transform transition-all hover:-translate-y-1 hover:scale-[1.02] hover:shadow-lg opacity-0 animate-fade-in-up"
+                className={`flex items-center bg-gradient-to-r from-[#f0f4f8] to-[#e8f1f8] rounded-xl p-5 mb-5 shadow-md transform transition-all hover:-translate-y-1 hover:scale-[1.02] hover:shadow-lg   ${!item.animated ? 'opacity-0 animate-fade-in-up' : ''}`}
                 style={{ animationDelay: `${index * 0.1}s`, animationFillMode: 'forwards' }}
                 >
                     <img

@@ -8,4 +8,5 @@ export interface TopNewsItem{
     source:string;
     summary:string;
     url:string;
+    animated:boolean;
   }
