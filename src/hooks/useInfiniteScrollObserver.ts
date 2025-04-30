@@ -8,6 +8,7 @@ export const useInfiniteScrollObserver = (
     shortList1:TopNewsItem[]) => {
 
     const sentinelRef = useRef<HTMLDivElement>(null);
+    // @ts-ignore
     const [shortList, setshortList] = useState<TopNewsItem[]>(shortList1);
 
 
