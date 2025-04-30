@@ -5,8 +5,7 @@ import { TopNewsItem } from "@/Interfaces/news";
 let topNewsCache: TopNewsItem[] | null = null;
 let cacheTimestamp: number = 0;
 
-const CACHE_DURATION = 2 * 60 * 1000; // 3 minutes
-
+const CACHE_DURATION = 2 * 60 * 1000; // 2 minutes
 
 export const topNewsService = async ():Promise<TopNewsItem[]> => {
 

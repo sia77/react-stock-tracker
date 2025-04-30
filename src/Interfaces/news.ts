@@ -9,4 +9,5 @@ export interface TopNewsItem{
     summary:string;
     url:string;
     animated:boolean;
+    batch:number;
   }
