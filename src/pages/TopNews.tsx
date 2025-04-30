@@ -1,14 +1,14 @@
-import { useTopNewsService } from "@/hooks/useTopNewsService";
+import { useTopNews } from "@/hooks/useTopNews";
 
 const TopNews = () => {
 
-    const {shortList, loading, error, scrollRef} = useTopNewsService(); 
+    const {shortList, loading, error, sentinelRef} = useTopNews(); 
 
     if (loading) return <div  className="text-center text-[#596479] text-lg mt-10">Loading...</div>;
     if (error) return <div  className="text-center text-stockTrackerRed text-lg mt-10">{error}</div>;
     
     return (
-        <div className="max-w-8xl mx-auto" ref={scrollRef}>
+        <div className="max-w-8xl mx-auto">
         {
             shortList.length > 0 ? (
                 shortList.map((item) => {
@@ -47,7 +47,8 @@ const TopNews = () => {
                     No news available at the moment. Please check back soon.
                 </div>
             )
-        }            
+        } 
+            <div ref={sentinelRef} style={{ height: '1px' }} />                   
         </div>
     );
 }
