@@ -38,7 +38,10 @@ axiosInstance.interceptors.response.use(
         }
         else if (error.response) {
           // Normal error with status code
-          if (error.response.status === 401) {
+          if (error.response.status === 400) {
+            toast.error(`Bad Request: ${error.message}`, { autoClose: 5000 });
+          }
+          else if (error.response.status === 401) {
             toast.error(`Unauthorized: ${error.message}`, { autoClose: 5000 });
             console.warn("Unauthorized, redirecting...");
             // window.location.href = '/login';
