@@ -20,17 +20,17 @@ export const useSearchResult = (query:string):any => {
             }
 
             try{
+                setLoading(true);
                 const response = await searchAssetService(query)
                 setSearchResult(response);
             }catch(err:any){
                 console.error(err);
-                setError("Failed to fetch search result");    
+                setError("Failed to fetch search result...");    
             }finally{
                 setLoading(false);
             }
         }
         fetchData();
-        
 
     },[query]);
 

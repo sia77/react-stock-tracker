@@ -9,7 +9,7 @@ const SearchResults = () => {
     const { searchResult, error, loading } = useSearchResult(query); 
 
 
-    if (loading && query.trim()) return <div  className="text-center text-[#596479] text-lg mt-10">Loading...</div>;
+    if (loading) return <div  className="text-center text-[#596479] text-lg mt-10">Loading...</div>;
     if (error) return <div  className="text-center text-stockTrackerRed text-lg mt-10">{error}</div>;
     if (!query.trim()) return <div className="text-center text-[#596479] text-lg mt-10">
             Please enter a search term...
@@ -65,9 +65,6 @@ const SearchResults = () => {
             })}
         </div>
     );
-
-
-
 };
 
 export default SearchResults;

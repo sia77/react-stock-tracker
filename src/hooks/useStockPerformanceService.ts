@@ -12,6 +12,7 @@ export const useStockPerformanceService = () => {
     useEffect(() => {
         const fetchData = async () => {
           try {
+            setLoading(true);
             const response = await stockPerformanceService();
             setData(response);
           } catch (err) {

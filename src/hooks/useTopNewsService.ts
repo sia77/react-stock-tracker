@@ -12,6 +12,7 @@ export const useTopNewsService = () => {
         () => {
             const fetchData = async () => {
                 try{
+                    setLoading(true);
                     const fetchedItems = await topNewsService();
                     const newItems = fetchedItems
                         .map(
