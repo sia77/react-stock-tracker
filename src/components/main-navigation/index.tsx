@@ -6,6 +6,8 @@ import MobileMenu from './MobileMenu';
 
 const MainNavigation = () => {
 
+    //const navigate = useNavigate();
+
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const menuRef = useRef<HTMLDivElement>(null);
     const iconRef = useRef<HTMLDivElement>(null);
@@ -29,6 +31,10 @@ const MainNavigation = () => {
         };
       }, []);
 
+    //   const handleClick = (path: string):any => {
+    //     navigate(path, { replace: true }); 
+    //   };
+
     const toggleMenu = () => {
         setIsMenuOpen(prev => !prev);
     };
@@ -38,7 +44,10 @@ const MainNavigation = () => {
             <div className="bg-gradient-to-r from-[#0A101C] to-[#1a2232] text-white w-full h-[53px] flex justify-center">
                 <nav className="w-[1220px] mx-auto flex justify-between items-center">
                     <div>
-                    <Link to="" className="text-white no-underline hover:opacity-80 transition-all">
+                    <Link
+                        
+                        to="" 
+                        className="text-white no-underline hover:opacity-80 transition-all">
                         <img src="/menu-logo.svg" alt="Logo" className="h-10" />
                     </Link>
                     </div>
@@ -47,6 +56,7 @@ const MainNavigation = () => {
                             <Link 
                             className="text-white no-underline px-3 py-2 rounded-md transition-colors hover:bg-stockTrackerBlue" 
                             to=""
+                            
                             >
                             Home
                             </Link>
@@ -55,6 +65,7 @@ const MainNavigation = () => {
                             <Link 
                             className="text-white no-underline px-3 py-2 rounded-md transition-colors hover:bg-stockTrackerBlue" 
                             to="/about"
+                            
                             >
                             About
                             </Link>
@@ -63,6 +74,7 @@ const MainNavigation = () => {
                             <Link 
                             className="text-white no-underline px-3 py-2 rounded-md transition-colors hover:bg-stockTrackerBlue" 
                             to="/news"
+                            
                             >
                             Top News
                             </Link>

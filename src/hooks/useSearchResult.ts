@@ -7,6 +7,7 @@ import { AssetData } from "@/Interfaces/assets";
 export const useSearchResult = (query:string):any => {
     
     const [searchResult, setSearchResult] = useState<AssetData[]>([]);
+    const [loading, setLoading] = useState<boolean>(true);
     const [error, setError] = useState<string>('');
 
     useEffect(() => {
@@ -24,6 +25,8 @@ export const useSearchResult = (query:string):any => {
             }catch(err:any){
                 console.error(err);
                 setError("Failed to fetch search result");    
+            }finally{
+                setLoading(false);
             }
         }
         fetchData();
@@ -31,6 +34,6 @@ export const useSearchResult = (query:string):any => {
 
     },[query]);
 
-    return {searchResult, error}
+    return {searchResult, error, loading}
 
 }

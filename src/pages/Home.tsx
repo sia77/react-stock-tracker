@@ -16,8 +16,8 @@ const Home = () => {
                 {data && (
                     <>
                         <AssetPerformanceCard title="Most Active" data={data.mostActive} maxItems={MAX_NEW_ITEM} alignment="md:justify-self-start" />
-                        <AssetPerformanceCard title="Most Gainers" data={data.gainers} maxItems={MAX_NEW_ITEM} alignment="md:justify-self-center" />
-                        <AssetPerformanceCard title="Most Losers" data={data.losers} maxItems={MAX_NEW_ITEM} alignment="justify-self-auto lg:justify-self-end" />
+                        <AssetPerformanceCard title="Top Gainers" data={data.gainers} maxItems={MAX_NEW_ITEM} alignment="md:justify-self-center" />
+                        <AssetPerformanceCard title="Top Losers" data={data.losers} maxItems={MAX_NEW_ITEM} alignment="justify-self-auto lg:justify-self-end" />
                     </>
                     )
                 }

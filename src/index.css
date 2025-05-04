@@ -27,7 +27,11 @@
 
 
 html, body { height:100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body { 
+  margin: 0; 
+  font-family: Roboto, "Helvetica Neue", sans-serif; 
+  background-color:#f6f8f8;
+}
 
 @theme inline {
   --radius-sm: calc(var(--radius) - 4px);
