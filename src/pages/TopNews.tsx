@@ -23,7 +23,7 @@ const TopNews = () => {
                 return (
                     <div
                     key={item.id}
-                    className={`flex items-center bg-gradient-to-r from-[#f0f4f8] to-[#e8f1f8] rounded-xl p-5 mb-2 shadow-md transform transition-all hover:-translate-y-1 hover:scale-[1.02] hover:shadow-lg ${!item.animated ? 'opacity-0 animate-fade-in-up' : ''}`}
+                    className={`flex items-center bg-card border rounded-xl p-5 mb-2 shadow-none transform transition-all hover:-translate-y-1 hover:scale-[1.02] hover:shadow-lg ${!item.animated ? 'opacity-0 animate-fade-in-up' : ''}`}
                     style={ style}
                     >
                         <img

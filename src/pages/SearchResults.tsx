@@ -25,7 +25,7 @@ const SearchResults = () => {
 
                 const isNegative = item.change.startsWith("-");
                 return (                    
-                    <Card key={item.id} className="mb-4 p-4 border rounded-xl shadow-none">
+                    <Card key={item.id} className="mb-4 p-4 border rounded-xl shadow-none transform transition-all hover:-translate-y-1 hover:scale-[1.02] hover:shadow-lg">
                         <CardContent className="grid grid-cols-2 md:grid-cols-4 gap-4 items-center">
                             <div>
                                 <h2 className="text-lg font-semibold">{item.symbol}</h2>

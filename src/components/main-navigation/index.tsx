@@ -42,7 +42,7 @@ const MainNavigation = () => {
     return (
         <>
             <div className="bg-gradient-to-r from-[#0A101C] to-[#1a2232] text-white w-full h-[53px] flex justify-center">
-                <nav className="w-[1220px] mx-auto flex justify-between items-center">
+                <nav className="w-[1220px] mx-4 md:mx-auto flex justify-between items-center">
                     <div>
                     <Link
                         
@@ -80,7 +80,7 @@ const MainNavigation = () => {
                             </Link>
                         </li>
                     </ul>
-                    <div className="text-white mr-4">
+                    <div className="text-white">
                         <div className="hidden text-sm">
                             <Link className="text-white no-underline invisible md:visible" to = '/sign up'>Sign Up</Link>
                         </div>
