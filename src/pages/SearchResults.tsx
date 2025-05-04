@@ -2,6 +2,7 @@ import { useSearchParams } from 'react-router-dom';
 import { useSearchResult } from '@/hooks/useSearchResult';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from 'lucide-react';
+import StatusMessage from '@/components/StatusMessage';
 
 const SearchResults = () => {
     const [searchParams] = useSearchParams();
@@ -9,11 +10,10 @@ const SearchResults = () => {
     const { searchResult, error, loading } = useSearchResult(query); 
 
 
-    if (loading) return <div  className="text-center text-[#596479] text-lg mt-10">Loading...</div>;
-    if (error) return <div  className="text-center text-stockTrackerRed text-lg mt-10">{error}</div>;
-    if (!query.trim()) return <div className="text-center text-[#596479] text-lg mt-10">
-            Please enter a search term...
-            </div>;
+    // Handle all message states early
+    if (loading || error || !query.trim()) {
+        return <StatusMessage loading={loading} error={error} query={query} />;
+    }
 
     const formatNumber = (num: number) => {
         return Intl.NumberFormat("en-US", { notation: "compact" }).format(num);

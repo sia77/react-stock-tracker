@@ -1,4 +1,5 @@
 import { AssetPerformanceCard } from "@/components/AssetPerformanceCard";
+import StatusMessage from "@/components/StatusMessage";
 import { useStockPerformanceService } from "@/hooks/useStockPerformanceService";
 
 const Home = () => {
@@ -7,8 +8,9 @@ const Home = () => {
 
     const {data, loading, error } = useStockPerformanceService(); 
   
-    if (loading) return <div  className="text-center text-[#596479] text-lg mt-10">Loading...</div>;
-    if (error) return <div  className="text-center text-stockTrackerRed text-lg mt-10">{error}</div>;
+    if (loading || error ) {
+        return <StatusMessage loading={loading} error={error} query={''} />;
+    }
 
     return (
         <div className="flex justify-center">
