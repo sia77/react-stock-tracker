@@ -1,7 +1,7 @@
 import { useSearchParams } from 'react-router-dom';
 import { useSearchResult } from '@/hooks/useSearchResult';
 import { Card, CardContent } from '@/components/ui/card';
-import { Badge } from 'lucide-react';
+import { ArrowDown, ArrowUp } from 'lucide-react';
 import StatusMessage from '@/components/StatusMessage';
 
 const SearchResults = () => {
@@ -32,14 +32,17 @@ const SearchResults = () => {
                                 <p className="text-sm text-gray-500">{item.name}</p>
                             </div>
                             <div>
-                                <p className="text-xl font-bold text-gray-800">${item.close.toFixed(2)}</p>
-                                <Badge
-                                    className={`text-sm px-2 py-1 mt-1 ${
-                                        isNegative ? "bg-red-100 text-red-600" : "bg-green-100 text-green-600"
-                                    }`}
-                                >
-                                    {item.change}
-                                </Badge>
+                                <p className="text-sm text-gray-600">Close</p>
+                                <p className="text-base font-medium flex items-center gap-1">
+                                    <span className={!isNegative ? 'text-green-600' : 'text-stockTrackerRed'}>
+                                        {!isNegative ? '+' : '-'}   ${item.close.toFixed(2)}
+                                    </span>
+                                    {!isNegative ? (
+                                        <ArrowUp className="text-green-600 w-4 h-4" />
+                                    ) : (
+                                        <ArrowDown className="text-stockTrackerRed w-4 h-4" />
+                                    )}
+                                </p>
                             </div>
                             <div>
                                 <p className="text-sm text-gray-600">Market Cap</p>
