@@ -22,9 +22,9 @@ export const useTopNewsService = () => {
                                 }));
                     setNewsList(prevList => [...prevList, ...newItems]);
                     
-                }catch(err){
+                }catch(err:any){
                     console.error(err);
-                    setError("Failed to fetch top news");
+                    setError(`Failed to fetch top news:  + ${err.message}`);
                 }finally{
                     setLoading(false);
                 }

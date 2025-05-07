@@ -15,9 +15,9 @@ export const useStockPerformanceService = () => {
             setLoading(true);
             const response = await stockPerformanceService();
             setData(response);
-          } catch (err) {
+          } catch (err:any) {
             console.error(err);
-            setError("Failed to fetch stock performance");
+            setError(`Failed to fetch stock performance: ${err.message}`);
           } finally {
             setLoading(false);
           }

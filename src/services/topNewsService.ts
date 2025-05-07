@@ -15,8 +15,16 @@ export const topNewsService = async ():Promise<TopNewsItem[]> => {
         return topNewsCache;
     }
 
-    const response = await axiosInstance.get<TopNewsItem[]>('topNews');
-    cacheTimestamp = now;
-    topNewsCache = response.data;
-    return response.data;
+    try{
+        const response = await axiosInstance.get<TopNewsItem[]>('topNews');
+        cacheTimestamp = now;
+        topNewsCache = response.data;
+        return response.data;
+
+    }catch(err:any){
+        console.error("Failed to fetch top news:", err.message || err);
+        throw new Error("Could not fetch top news data");
+    }
+
+
 }

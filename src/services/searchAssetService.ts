@@ -10,7 +10,7 @@ export const searchAssetService = async (query:string):Promise<AssetData[]> =>{
     }
 
     try{
-        const result = await axiosInstance.get<AssetData[]>(`${import.meta.env.VITE_NETLIFY_FUNCS}searchAssets?search=${query}`);
+        const result = await axiosInstance.get<AssetData[]>(`searchAssets?search=${query}`);
         cache.set(query,result.data );
         return result.data;
 

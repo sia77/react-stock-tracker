@@ -1,4 +1,4 @@
-import { useSearchParams } from 'react-router-dom';
+import { Link, useSearchParams } from 'react-router-dom';
 import { useSearchResult } from '@/hooks/useSearchResult';
 import { Card, CardContent } from '@/components/ui/card';
 import { ArrowDown, ArrowUp } from 'lucide-react';
@@ -24,6 +24,7 @@ const SearchResults = () => {
             {searchResult.map((item: any) => {
 
                 const isNegative = item.change.startsWith("-");
+                const assetType = item?.type === "Common Stock" ? 'stock' : item?.type;
                 return (                    
                     <Card key={item.id} className="mb-4 p-4 border rounded-xl shadow-none transform transition-all hover:-translate-y-1 hover:scale-[1.02] hover:shadow-lg">
                         <CardContent className="grid grid-cols-2 md:grid-cols-4 gap-4 items-center">
@@ -55,10 +56,20 @@ const SearchResults = () => {
                                 </div>
                             )}
                             {item.high !== undefined && item.low !== undefined && (
-                                <div className="col-span-2 md:col-span-1">
+                                <div className="col-span-1 md:col-span-1">
                                     <p className="text-sm text-gray-600">Day Range</p>
                                     <p className="text-base font-medium">
                                         ${item.low.toFixed(2)} - ${item.high.toFixed(2)}
+                                    </p>
+                                </div>
+                            )}
+                            {item.symbol !== undefined && assetType !== undefined && 
+                                (<div className="md:col-start-4">
+                                    <p>
+                                        <Link 
+                                            className ="bg-stockTrackerBlue text-white px-3 py-2 rounded-md font-bold text-sm"  
+                                            to = {`/${assetType.toLowerCase()}/${item.symbol.toLowerCase()}`}
+                                            >More</Link>
                                     </p>
                                 </div>
                             )}

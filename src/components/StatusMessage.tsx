@@ -2,9 +2,11 @@ interface StatusMessageProps {
     loading?: boolean;
     error?: string | null;
     query?: string;
+    ticker?: string;
+    type?:string;
   }
   
-  const StatusMessage: React.FC<StatusMessageProps> = ({ loading, error, query }) => {
+  const StatusMessage: React.FC<StatusMessageProps> = ({ loading, error, query, ticker, type }) => {
     if (loading) {
       return <div className="text-center text-[#596479] text-lg mt-10">Loading...</div>;
     }
@@ -16,6 +18,11 @@ interface StatusMessageProps {
     if (query !== undefined && !query.trim()) {
       return <div className="text-center text-[#596479] text-lg mt-10">Please enter a search term...</div>;
     }
+
+    if (!ticker || !type){
+      return <div className="text-center text-stockTrackerRed text-lg mt-10">Invalid URL: Missing ticker or type.</div>;
+    }
+       
   
     return null; // No message to show
   };

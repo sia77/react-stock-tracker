@@ -3,6 +3,8 @@ import About from '../pages/About';
 import Home from './../pages/Home';
 import TopNews from '../pages/TopNews';
 import SearchResults from '../pages/SearchResults';
+import { AssetDetail } from '@/pages/AssetDetail';
+import PageNotFound from '@/components/PageNotFound';
 
 
 const AppRoutes = () => {
@@ -14,6 +16,8 @@ const AppRoutes = () => {
             <Route path="/news" element={<TopNews />} />
             {/* <Route path="/login" element={<Login />} /> */}
             <Route path="/search" element={<SearchResults />} />
+            <Route path="/:type/:ticker" element={<AssetDetail />} />
+            <Route path="/:type" element={<PageNotFound />} />
         </Routes>
 
     )
