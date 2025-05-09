@@ -3,7 +3,7 @@ import StatusMessage from '@/components/StatusMessage';
 import { useAssetHistoricalBarService } from '@/hooks/useAssetHistoricalBarService';
 import { useAssetMetricService } from '@/hooks/useAssetMetricService';
 import { useHistoricBarRequest } from '@/hooks/useHistoricBarRequest';
-import { Table } from 'lucide-react';
+//import { Table } from 'lucide-react';
 import { useParams } from 'react-router-dom';
 
 

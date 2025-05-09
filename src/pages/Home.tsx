@@ -1,7 +1,7 @@
 import { AssetPerformanceCard } from "@/components/AssetPerformanceCard";
 import StatusMessage from "@/components/StatusMessage";
-import useStockPerformance from "@/hooks/useStockPerformance";
-import { useStockPerformanceService } from "@/hooks/useStockPerformanceService";
+import useStockPerformance from "@/hooks/useStockPerformance"
+
 
 const Home = () => {
 
