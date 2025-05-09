@@ -1,15 +1,17 @@
 import { AssetPerformanceCard } from "@/components/AssetPerformanceCard";
 import StatusMessage from "@/components/StatusMessage";
+import useStockPerformance from "@/hooks/useStockPerformance";
 import { useStockPerformanceService } from "@/hooks/useStockPerformanceService";
 
 const Home = () => {
 
     const MAX_NEW_ITEM:number = 6;
 
-    const {data, loading, error } = useStockPerformanceService(); 
+    //const {data, loading, error } = useStockPerformanceService();
+    const { data, isLoading, error } = useStockPerformance(); 
   
-    if (loading || error ) {
-        return <StatusMessage loading={loading} error={error} query={''} />;
+    if (isLoading || error ) {
+        return <StatusMessage loading={isLoading} error={error?.message} query={''} />;
     }
 
     return (

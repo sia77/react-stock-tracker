@@ -1,7 +1,9 @@
 import Chart from '@/components/Chart';
 import StatusMessage from '@/components/StatusMessage';
 import { useAssetHistoricalBarService } from '@/hooks/useAssetHistoricalBarService';
+import { useAssetMetricService } from '@/hooks/useAssetMetricService';
 import { useHistoricBarRequest } from '@/hooks/useHistoricBarRequest';
+import { Table } from 'lucide-react';
 import { useParams } from 'react-router-dom';
 
 
@@ -13,16 +15,25 @@ export const AssetDetail = () => {
     
     const request = useHistoricBarRequest(ticker);
 
-    const { data, loading, error} = useAssetHistoricalBarService(request);
+    const { data:dataBar, loading:loadingBar, error:errorBar} = useAssetHistoricalBarService(request);
+    const { data:metricData, loading:metricLoading, error:metricError} = useAssetMetricService(ticker);
     
     // Handle all message states early
-    if (loading || error ) {
-        return <StatusMessage loading = {loading} error = {error} />;
+    if (loadingBar || metricLoading) {
+        return <StatusMessage loading={true} />;
+    }
+    
+    if (errorBar || metricError) {
+        return <StatusMessage error={errorBar || metricError} />;
     }
 
-    const {bars}= data;
+    console.log("metricData: ", metricData);
 
-    console.log("bars:", bars);
+    console.log("data: ", dataBar);
+
+    const {bars}= dataBar;
+
+    //console.log("bars:", bars);
 
   
     return (
@@ -30,10 +41,9 @@ export const AssetDetail = () => {
         <div className='col-span-2'>
             <Chart data={bars} />
         </div>
-        {/* <div>
-            <div className='w-[660px] h-[350px]'></div>
+        {/* <div className=''>
+            <Table />
         </div> */}
-        
       </div>
     );
   };
