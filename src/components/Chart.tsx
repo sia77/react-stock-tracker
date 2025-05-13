@@ -3,7 +3,7 @@ import { ApexOptions } from "apexcharts";
 import ReactApexChart from "react-apexcharts";
 
 
-const Chart = ({data}:any) => {
+const Chart = ({data, height}:any) => {
 
     const pairs = data.map((item:BarData ) => ({
         x: new Date(item.t).getTime(), // recommended for ApexCharts
@@ -62,7 +62,7 @@ const Chart = ({data}:any) => {
 
 
     return(
-        <ReactApexChart options={options} series={series} type="line" height={350} />
+        <ReactApexChart options={options} series={series} type="line" height={height} />
     )
 
 }

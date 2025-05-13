@@ -18,6 +18,7 @@ const persister = createSyncStoragePersister({ storage: window.localStorage });
 persistQueryClient({
   queryClient,
   persister,
+  maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days in ms
 });
 
 export default queryClient;

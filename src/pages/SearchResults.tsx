@@ -1,18 +1,19 @@
 import { Link, useSearchParams } from 'react-router-dom';
-import { useSearchResult } from '@/hooks/useSearchResult';
+import useSearchResult  from '@/hooks/useSearchResult';
 import { Card, CardContent } from '@/components/ui/card';
 import { ArrowDown, ArrowUp } from 'lucide-react';
 import StatusMessage from '@/components/StatusMessage';
+import { largeNumberFormat } from '@/utils/formaters/largeNumberFormat';
 
 const SearchResults = () => {
     const [searchParams] = useSearchParams();
     const query = searchParams.get('q') ?? '';
-    const { searchResult, error, loading } = useSearchResult(query); 
+    const { data:searchResult, error, isLoading:loading } = useSearchResult(query); 
 
 
     // Handle all message states early
     if (loading || error || !query.trim()) {
-        return <StatusMessage loading={loading} error={error} query={query} />;
+        return <StatusMessage loading={loading} error={error?.message} query={query} />;
     }
 
     const formatNumber = (num: number) => {
@@ -21,7 +22,7 @@ const SearchResults = () => {
 
     return (
         <div>
-            {searchResult.map((item: any) => {
+            {searchResult?.map((item: any) => {
 
                 const isNegative = item.change.startsWith("-");
                 const assetType = item?.type === "Common Stock" ? 'stock' : item?.type;
@@ -47,7 +48,7 @@ const SearchResults = () => {
                             </div>
                             <div>
                                 <p className="text-sm text-gray-600">Market Cap</p>
-                                <p className="text-base font-medium">{formatNumber(item.marketCap)}</p>
+                                <p className="text-base font-medium">{largeNumberFormat(item.marketCap, 'M') }</p>
                             </div>
                             {item.volume !== undefined && (
                                 <div>

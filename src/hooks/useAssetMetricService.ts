@@ -9,7 +9,6 @@ export const useAssetMetricService = (ticker:string) => {
 
     useEffect(() => {
 
-
         const fetchData = async () => {
 
             try{
@@ -25,8 +24,6 @@ export const useAssetMetricService = (ticker:string) => {
             }finally{
                 setLoading(false);
             }
-
-
         }
 
         fetchData();

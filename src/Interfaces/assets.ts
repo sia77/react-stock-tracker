@@ -4,6 +4,7 @@ export interface AssetData {
     name: string;
     open: number;
     close: number;
+    prevC:number;
     high: number;
     low: number;
     change: string;
@@ -13,4 +14,10 @@ export interface AssetData {
     dailyRange: number;
     intradayIntensity: number;
     marketCap: number;
+    shareOutstanding:number;
+    currency:string;
+    ipo:string;
+    exchange:string;
+    weburl:string;
+    logo:string;
   }

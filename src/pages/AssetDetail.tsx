@@ -1,9 +1,13 @@
 import Chart from '@/components/Chart';
+import MetricsTable from '@/components/MetricsTable';
 import StatusMessage from '@/components/StatusMessage';
+import { Card, CardContent } from '@/components/ui/card';
 import { useAssetHistoricalBarService } from '@/hooks/useAssetHistoricalBarService';
 import { useAssetMetricService } from '@/hooks/useAssetMetricService';
 import { useHistoricBarRequest } from '@/hooks/useHistoricBarRequest';
-//import { Table } from 'lucide-react';
+import useSearchResult from '@/hooks/useSearchResult';
+import { AssetData } from '@/Interfaces/assets';
+import { currencySymbol } from '@/utils/formaters/currencySymbol';
 import { useParams } from 'react-router-dom';
 
 
@@ -16,34 +20,105 @@ export const AssetDetail = () => {
     const request = useHistoricBarRequest(ticker);
 
     const { data:dataBar, loading:loadingBar, error:errorBar} = useAssetHistoricalBarService(request);
-    const { data:metricData, loading:metricLoading, error:metricError} = useAssetMetricService(ticker);
+    const { data:metricData, loading:metricLoading, error:metricError} = useAssetMetricService(ticker.toUpperCase());
+    const { data:searchData, isLoading:searchLoading, error:searchError} = useSearchResult(ticker.toUpperCase());
     
     // Handle all message states early
-    if (loadingBar || metricLoading) {
+    if (loadingBar || metricLoading || searchLoading) {
         return <StatusMessage loading={true} />;
     }
     
-    if (errorBar || metricError) {
+    if (errorBar || metricError || searchError?.message) {
         return <StatusMessage error={errorBar || metricError} />;
     }
+
+
+
+    console.log("searchData1213: ", searchData);
+
+    const foundItem = searchData?.find((item:AssetData) => item.symbol.toUpperCase() === ticker.toUpperCase())
 
     console.log("metricData: ", metricData);
 
     console.log("data: ", dataBar);
 
-    const {bars}= dataBar;
+    console.log("foundItem: ", foundItem);
 
-    //console.log("bars:", bars);
+    const { bars }= dataBar;
+
+
+    const metricPackage = {
+
+        mrkCap: foundItem && foundItem.marketCap,
+        high: foundItem && foundItem.high,
+        low: foundItem && foundItem.low,
+        open: foundItem && foundItem.open,
+        close: foundItem && foundItem.close,
+        prevC: foundItem && foundItem.prevC, 
+        volume: foundItem && foundItem.volume, 
+        shareOut: foundItem && foundItem.shareOutstanding,
+        ipo: foundItem && foundItem.ipo,
+        _52WeekHigh: metricData.metric['52WeekHigh'],
+        _52WeekLow: metricData.metric['52WeekLow'],
+        beta: metricData.metric.beta, 
+        epsTTM: metricData.metric.epsTTM,
+        currentDividendYieldTTM: metricData.metric.currentDividendYieldTTM,
+        peTTM: metricData.metric.peTTM,
+        dividendYieldIndicatedAnnual: metricData.metric.dividendYieldIndicatedAnnual,
+        dividendPerShareTTM: metricData.metric.dividendPerShareTTM,
+        
+
+
+    };
+
+    console.log("metricPackage: ", metricPackage);
 
   
     return (
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 items-center">
-        <div className='col-span-2'>
-            <Chart data={bars} />
-        </div>
-        {/* <div className=''>
-            <Table />
-        </div> */}
-      </div>
+        <>
+            <div>
+            <Card className='mb-4 p-4 border rounded-xl shadow-none'>
+                <CardContent>
+                    <h2 className="pl-[16px]">
+                        <div className="flex items-center">
+                            <div className="mr-2">
+                                <a target="_blank" href="">
+                                    <div className="bg-black text-white text-[12px] font-semibold w-[45px] h-[45px] rounded-full flex justify-center items-center"> 
+                                        {foundItem?.symbol} 
+                                    </div>
+                                </a>
+                            </div>
+                            <div className="font-medium text-[20px] leading-[32px]"> 
+                            {foundItem?.name}
+                            </div>
+                        </div>
+                        <div className="flex items-baseline">
+                            <div className="mr-1 font-medium text-[20px] leading-[32px]">{currencySymbol(foundItem?.currency) || '$'}{foundItem?.close}</div>
+                            <div className="text-sm">{foundItem?.currency}</div>
+                        </div>
+                    </h2>
+                </CardContent>
+            </Card>
+
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 items-center">
+                <div className='col-span-2 md:col-span-1'>
+                    <Card className='mb-4 p-4 border rounded-xl shadow-none'>
+                        <CardContent>
+                            <Chart data={bars} height={350} />
+                        </CardContent>
+                    </Card>
+                </div>
+                <div className='col-span-2 md:col-span-1'>
+                    <Card className='mb-4 p-4 border rounded-xl shadow-none'>
+                        <CardContent>
+                            <MetricsTable metricPackage = {metricPackage} height={365}  />
+                        </CardContent>
+                    </Card>                    
+                </div>
+            </div>
+        </>
+
+
     );
   };
