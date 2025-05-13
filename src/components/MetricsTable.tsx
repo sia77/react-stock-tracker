@@ -4,10 +4,10 @@ const MetricsTable = ({metricPackage, height}:any) => {
 
 
     return (
-        <div className={`grid grid-cols-2 gap-1`} style={{ height: `${height}px` }}>
+        <div className={`grid grid-cols-2 gap-4`} style={{ height: `${height}px` }}>
 
             { metricPackage?.mrkCap && (
-                <div className='grid grid-cols-2 gap-4 items-center text-sm  border-b border-default'>
+                <div className='grid grid-cols-2 gap-1 items-center text-sm  border-b border-default'>
                     <div className="pl-2">Mrk Cap</div>
                     <div className="font-semibold text-right pr-2">{ largeNumberFormat(metricPackage.mrkCap, 'M') }</div>
                 </div>
