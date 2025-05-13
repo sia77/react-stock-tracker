@@ -83,7 +83,7 @@ export const AssetDetail = () => {
                         <div className="flex items-center">
                             <div className="mr-2">
                                 <a target="_blank" href={foundItem?.weburl}>
-                                    <div className="bg-black text-white text-[12px] font-semibold w-[45px] h-[45px] rounded-full flex justify-center items-center"> 
+                                    <div className="bg-black text-white text-[12px] font-semibold w-[45px] h-[45px] rounded-full border-2 border-stockTrackerBlue flex justify-center items-center"> 
                                         {foundItem?.symbol} 
                                     </div>
                                 </a>

@@ -2,6 +2,7 @@ import { assetDelta } from "@/Interfaces/marketPerformance";
 import { Card, CardContent, CardHeader } from "./ui/card";
 import CountUp from 'react-countup';
 import { ArrowUpRight, ArrowDownRight } from "lucide-react";
+import { Link } from "react-router-dom";
 
 interface AssetListCardProps {
     title: string;
@@ -23,7 +24,11 @@ export const AssetPerformanceCard = ({title, data, maxItems, alignment}:AssetLis
                     data?.slice(0, maxItems).map((item) => (
 
                         <div key={item.ticker} className="flex justify-between mb-[12px] text-[14px] px-2 transition-colors duration-200 hover:bg-gray-100">
-                            <div >{item.ticker}</div>
+                            <div>
+                                <Link to={`./stock/${item.ticker}`} className="underline hover:text-stockTrackerBlue">
+                                    {item.ticker}
+                                </Link>                                
+                            </div>
                             <div className="flex items-center gap-1">
                                 {item.delta > 0 ? (
                                     <ArrowUpRight className="text-green-600 w-4 h-4" />
