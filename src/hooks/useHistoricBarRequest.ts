@@ -18,7 +18,7 @@ export const useHistoricBarRequest = (ticker: string): HistoricBarRequest => {
     return useMemo(() => ({
       ticker: ticker.toUpperCase(),
       limit: 1000,
-      timeFrame: '1Month',
+      timeFrame: '1W',
       start,
       end,
     }), [ticker, start, end]);
