@@ -25,7 +25,7 @@ export const AssetDetail = () => {
     
     // Handle all message states early
     if (loadingBar || metricLoading || searchLoading) {
-        return <StatusMessage loading={true} />;
+        return <StatusMessage loading={loadingBar || metricLoading || searchLoading} />;
     }
     
     if (errorBar || metricError || searchError?.message) {

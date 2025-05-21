@@ -8,6 +8,7 @@
   --color-stockTrackerBlackLight: #596479;
   --color-stockTrackerBlue:#1382aa;
   --color-stockTrackerRed:#d91818;
+  --color-stockTrackerBlue-700:#0f6b8d;
 }
 
 @keyframes fade-in-up {
@@ -26,7 +27,7 @@
 }
 
 
-html, body { height:100%; }
+html, body { height:100%; scrollbar-gutter: stable; }
 body { 
   margin: 0; 
   font-family: Roboto, "Helvetica Neue", sans-serif; 
