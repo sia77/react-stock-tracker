@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { useEffect, useRef, useState } from 'react';
 import MobileMenu from './MobileMenu';
+import SignInSignOut from '../SignInSignOut';
 
 
 
@@ -42,7 +43,7 @@ const MainNavigation = () => {
     return (
         <>
             <div className="bg-gradient-to-r from-[#0A101C] to-[#1a2232] text-white w-full h-[53px] flex justify-center">
-                <nav className="w-[1220px] mx-4 md:mx-auto flex justify-between items-center">
+                <nav className="w-[1220px] mx-4 flex justify-between items-center">
                     <div>
                     <Link
                         
@@ -55,8 +56,7 @@ const MainNavigation = () => {
                         <li>
                             <Link 
                             className="text-white no-underline px-3 py-2 rounded-md transition-colors hover:bg-stockTrackerBlue" 
-                            to=""
-                            
+                            to=""                            
                             >
                             Home
                             </Link>
@@ -64,8 +64,7 @@ const MainNavigation = () => {
                         <li>
                             <Link 
                             className="text-white no-underline px-3 py-2 rounded-md transition-colors hover:bg-stockTrackerBlue" 
-                            to="/about"
-                            
+                            to="/about"                            
                             >
                             About
                             </Link>
@@ -73,16 +72,25 @@ const MainNavigation = () => {
                         <li>
                             <Link 
                             className="text-white no-underline px-3 py-2 rounded-md transition-colors hover:bg-stockTrackerBlue" 
-                            to="/news"
-                            
+                            to="/news"                            
                             >
                             Top News
                             </Link>
                         </li>
+                        <li>
+                            <Link 
+                            className="text-white no-underline px-3 py-2 rounded-md transition-colors hover:bg-stockTrackerBlue" 
+                            to="/userDashboard"                            
+                            >
+                            User Dashboard
+                            </Link>
+                        </li>
+
+                        
                     </ul>
-                    <div className="text-white">
-                        <div className="hidden text-sm">
-                            <Link className="text-white no-underline invisible md:visible" to = '/sign up'>Sign Up</Link>
+                    <div className="">
+                        <div className="hidden md:block text-sm text-white no-underline px-3 py-2 rounded-md transition-colors hover:bg-stockTrackerBlue cursor-pointer">
+                            <SignInSignOut />
                         </div>
                         {/* Hamburger icon for mobile */}
                         <div className = "md:hidden cursor-pointer" ref={iconRef} onClick={toggleMenu}>
