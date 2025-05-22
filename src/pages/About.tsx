@@ -12,8 +12,7 @@ export default function About(){
 
                         <p className="mb-[30px]">It integrates real stock market data from external APIs; however, please note that the data is not real-time and may be subject to delays. 
                             This site is intended for demonstration purposes only — it is not a financial tool and does not provide investment advice or guarantees regarding data accuracy or timeliness.</p>
-                        <p className="mb-[30px]">The application highlights key React concepts such as component architecture, state management, and API integration.</p>
-                        <p className="mb-[30px]">Handled API communication, error states, and loading indicators for a smooth user experience.</p>
+                        <p className="mb-[30px]">The application highlights key React concepts such as component architecture, state management, and API integration and  communication, error states, and loading indicators for a smooth user experience.</p>
                         <p className="mb-[30px]">Use it at your own discretion. I hope StockTracker offers a clear example of my technical capabilities and dedication to building clean, responsive user interfaces.</p>
                         <p className="mb-[30px]">Thanks for visiting!</p>
                         </article>
