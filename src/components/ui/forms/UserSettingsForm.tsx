@@ -7,6 +7,10 @@ type FormData = {
   lastName: string;
   address?: string;
   phone?: string;
+  unit?:string;
+  city?:string;
+  state_province:string;
+  postalCode:string;
 };
 
 export default function UserSettingsForm() {
@@ -17,6 +21,8 @@ export default function UserSettingsForm() {
     lastName: "",
     address: "",
     phone: "",
+    state_province: "",
+    postalCode:""
   });
 
   const [errors, setErrors] = useState<{ [K in keyof FormData]?: string }>({});
@@ -45,7 +51,7 @@ export default function UserSettingsForm() {
   return (
     <form
       onSubmit={handleSubmit}
-      className="max-w-xl mx-auto mt-10 space-y-6 bg-white p-8 rounded-xl border"
+      className="max-w-xl mx-auto my-10 space-y-6 bg-white p-8 rounded-xl border"
     >
       <h2 className="text-xl font-semibold text-gray-800">User Settings</h2>
 
@@ -102,17 +108,6 @@ export default function UserSettingsForm() {
       </div>
 
       <div>
-        <label className="block text-sm font-medium text-gray-700">Address (optional)</label>
-        <input
-          type="text"
-          name="address"
-          value={form.address}
-          onChange={handleChange}
-          className="mt-1 block w-full px-4 py-2 border  rounded-md focus:ring-blue-500 focus:border-blue-500"
-        />
-      </div>
-
-      <div>
         <label className="block text-sm font-medium text-gray-700">Phone (optional)</label>
         <input
           type="tel"
@@ -122,6 +117,82 @@ export default function UserSettingsForm() {
           className="mt-1 block w-full px-4 py-2 border  rounded-md focus:ring-blue-500 focus:border-blue-500"
         />
       </div>
+
+      <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+        <div className="col-span-full md:col-span-1">
+          <label className="block text-sm font-medium text-gray-700">Unit # (optional)</label>
+            <input
+              type="text"
+              name="unit"
+              value={form.unit}
+              onChange={handleChange}
+              className="mt-1 block w-full px-4 py-2 border  rounded-md focus:ring-blue-500 focus:border-blue-500"
+            />          
+        </div>
+        <div className="col-span-full md:col-span-3">
+          <label className="block text-sm font-medium text-gray-700">Street Address (optional)</label>
+          <input
+            type="text"
+            name="address"
+            value={form.address}
+            onChange={handleChange}
+            className="mt-1 block w-full px-4 py-2 border  rounded-md focus:ring-blue-500 focus:border-blue-500"
+          />
+        </div>
+
+      </div>
+
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div>
+          <label className="block text-sm font-medium text-gray-700">City</label>
+          <input
+            type="text"
+            name="city"
+            value={form.city}
+            onChange={handleChange}
+            className={`mt-1 block w-full px-4 py-2 border ${
+              errors.city ? "border-stockTrackerRed" : ""
+            } rounded-md focus:ring-blue-500 focus:border-blue-500`}
+          />
+          {errors.city && <p className="text-sm text-stockTrackerRed mt-1">{errors.city}</p>}
+        </div>
+
+        <div>
+          <label className="block text-sm font-medium text-gray-700">Province/State</label>
+          <input
+            type="text"
+            name="state_province"
+            value={form.state_province}
+            onChange={handleChange}
+            className={`mt-1 block w-full px-4 py-2 border ${
+              errors.state_province ? "border-stockTrackerRed" : ""
+            } rounded-md focus:ring-blue-500 focus:border-blue-500`}
+          />
+          {errors.state_province && <p className="text-sm text-stockTrackerRed mt-1">{errors.state_province}</p>}
+        </div>
+      </div>
+
+
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div>
+          <label className="block text-sm font-medium text-gray-700">Postal/Zip Code</label>
+          <input
+            type="text"
+            name="postalCode"
+            value={form.postalCode}
+            onChange={handleChange}
+            className={`mt-1 block w-full px-4 py-2 border ${
+              errors.postalCode ? "border-stockTrackerRed" : ""
+            } rounded-md focus:ring-blue-500 focus:border-blue-500`}
+          />
+          {errors.postalCode && <p className="text-sm text-stockTrackerRed mt-1">{errors.postalCode}</p>}
+        </div>
+
+      </div>
+
+
+
+
 
       <button
         type="submit"
