@@ -7,14 +7,14 @@ const UserDashboard = () =>{
     
 
     const tabContent:React.ReactNode = UserSettingsForm();
-    const changePassword:React.ReactNode = ChangePasswordForm();
+    //const changePassword:React.ReactNode = ChangePasswordForm();
 
     return (
         <>
             <Tabs
                 items={[
                     { label: 'Settings', content: tabContent },
-                    { label: 'Password', content: changePassword },
+                    //{ label: 'Password', content: changePassword },
                    
                 ]}
             />        

@@ -1,35 +1,34 @@
+import StatusMessage from "@/components/StatusMessage";
 import { useUserInfoService } from "@/hooks/useUserInfoService";
+import {FormData } from "@/Interfaces/db";
 import { useState } from "react";
 
-type FormData = {
-  //username: string;
-  email: string;
-  firstName: string;
-  lastName: string;
-  address?: string;
-  phone?: string;
-  unit?:string;
-  city?:string;
-  state_province:string;
-  postalCode:string;
-};
 
 export default function UserSettingsForm() {
 
-  const { data, token, loading, error } = useUserInfoService();
-
   const [form, setForm] = useState<FormData>({
-    //username: "siavash123",
-    email: "siavash@example.com",
+    
+    email: "",
     firstName: "",
     lastName: "",
     address: "",
     phone: "",
     state_province: "",
-    postalCode:""
+    postalCode:"",
+    unit:"",
+    city:""
   });
 
   const [errors, setErrors] = useState<{ [K in keyof FormData]?: string }>({});
+
+  const { data, token, loading, error } = useUserInfoService(); 
+
+  
+
+  if (loading || error) {
+    return <StatusMessage loading={loading} error={error} />;
+  }
+
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -75,7 +74,7 @@ export default function UserSettingsForm() {
         <input
           type="email"
           name="email"
-          value={form.email}
+          value={data.email}
           readOnly
           className="mt-1 block w-full bg-gray-100 text-gray-600 px-4 py-2 border  rounded-md cursor-not-allowed"
         />
