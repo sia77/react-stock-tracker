@@ -7,8 +7,6 @@ const ProtectedRoute = ({ children }: { children: JSX.Element }) => {
   const location = useLocation();
   const {isAuthenticated, isLoading } = useAuth();
 
-  console.log("isAuthenticated: ", isAuthenticated);
-
   if (isLoading) {
     return <StatusMessage loading={isLoading} />;
 }

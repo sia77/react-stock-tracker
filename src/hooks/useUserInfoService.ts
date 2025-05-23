@@ -27,7 +27,7 @@ export const useUserInfoService = () =>{
                 
                 setToken(t);
                 const result = await userInfoService(t);
-                setData(result);
+                setData(result.data.user);
 
             }catch(err:any){
                 console.log(err);

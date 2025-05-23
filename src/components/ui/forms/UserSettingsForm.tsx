@@ -1,7 +1,8 @@
+import { useUserInfoService } from "@/hooks/useUserInfoService";
 import { useState } from "react";
 
 type FormData = {
-  username: string;
+  //username: string;
   email: string;
   firstName: string;
   lastName: string;
@@ -14,8 +15,11 @@ type FormData = {
 };
 
 export default function UserSettingsForm() {
+
+  const { data, token, loading, error } = useUserInfoService();
+
   const [form, setForm] = useState<FormData>({
-    username: "siavash123",
+    //username: "siavash123",
     email: "siavash@example.com",
     firstName: "",
     lastName: "",
@@ -55,7 +59,7 @@ export default function UserSettingsForm() {
     >
       <h2 className="text-xl font-semibold text-gray-800">User Settings</h2>
 
-      <div>
+      {/* <div>
         <label className="block text-sm font-medium text-gray-700">Username</label>
         <input
           type="text"
@@ -64,7 +68,7 @@ export default function UserSettingsForm() {
           readOnly
           className="mt-1 block w-full bg-gray-100 text-gray-600 px-4 py-2 border  rounded-md cursor-not-allowed"
         />
-      </div>
+      </div> */}
 
       <div>
         <label className="block text-sm font-medium text-gray-700">Email</label>
