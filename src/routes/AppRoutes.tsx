@@ -10,8 +10,6 @@ import ProtectedRoute from '@/components/ProtectedRoute';
 
 
 const AppRoutes = () => {
-
-    console.log("App route");
     
     return (
         <Routes>

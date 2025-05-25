@@ -8,10 +8,10 @@ export interface FormData {
     city:string;
     state_province: string;
     postalCode: string;
+    createdAt:string;
 }
 
-export interface ApiUser {
-    id: string;
+export interface ApiUser {    
     email: string;
     first_name: string | null;
     last_name: string | null;
@@ -21,6 +21,6 @@ export interface ApiUser {
     city: string | null;
     state_province: string | null;
     postal_code: string | null;
-    auth0_sub: string;
+    //auth0_sub: string;
     created_at: string;
 }

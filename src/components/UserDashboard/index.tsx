@@ -1,5 +1,5 @@
 import {Tabs} from "../ui/Tabs";
-import ChangePasswordForm from "../ui/forms/ChangePasswordForm";
+//import ChangePasswordForm from "../ui/forms/ChangePasswordForm";
 import UserSettingsForm from "../ui/forms/UserSettingsForm";
 
 

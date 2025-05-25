@@ -1,13 +1,13 @@
 import StatusMessage from "@/components/StatusMessage";
+import { useUpdateUser } from "@/hooks/useUpdateUser";
 import { useUserInfoService } from "@/hooks/useUserInfoService";
 import {FormData } from "@/Interfaces/db";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 
 export default function UserSettingsForm() {
 
-  const [form, setForm] = useState<FormData>({
-    
+  const [form, setForm] = useState<FormData>({    
     email: "",
     firstName: "",
     lastName: "",
@@ -16,19 +16,27 @@ export default function UserSettingsForm() {
     state_province: "",
     postalCode:"",
     unit:"",
-    city:""
+    city:"",
+    createdAt:''
   });
 
   const [errors, setErrors] = useState<{ [K in keyof FormData]?: string }>({});
 
-  const { data, token, loading, error } = useUserInfoService(); 
-
+  const { data, loading, error } = useUserInfoService(); 
   
+  console.log("***********data: ", data);
+  
+  useEffect(() => {
+    if (data) {
+      setForm(data);
+    }
+  }, [data]);
 
-  if (loading || error) {
+  const { updateUser, loading:loadingUpdate, error:errorLoading } = useUpdateUser();
+
+  if (loading || error || !data) {
     return <StatusMessage loading={loading} error={error} />;
-  }
-
+  } 
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -39,6 +47,9 @@ export default function UserSettingsForm() {
     const newErrors: typeof errors = {};
     if (!form.firstName.trim()) newErrors.firstName = "First name is required.";
     if (!form.lastName.trim()) newErrors.lastName = "Last name is required.";
+    if (!form.city.trim()) newErrors.city = "City is required.";
+    if (!form.state_province.trim()) newErrors.state_province = "Province/State is required.";
+    if (!form.postalCode.trim()) newErrors.postalCode = "Postal/Zip code is required.";
     // Optional: Add regex/email/phone format validation here
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
@@ -47,6 +58,9 @@ export default function UserSettingsForm() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (!validate()) return;
+
+    updateUser(form);
+    
     console.log("Saving user settings:", form);
     // Call API or do something with the data
   };
@@ -74,7 +88,7 @@ export default function UserSettingsForm() {
         <input
           type="email"
           name="email"
-          value={data.email}
+          value={form.email}
           readOnly
           className="mt-1 block w-full bg-gray-100 text-gray-600 px-4 py-2 border  rounded-md cursor-not-allowed"
         />
@@ -190,13 +204,7 @@ export default function UserSettingsForm() {
           />
           {errors.postalCode && <p className="text-sm text-stockTrackerRed mt-1">{errors.postalCode}</p>}
         </div>
-
       </div>
-
-
-
-
-
       <button
         type="submit"
         className="w-full bg-stockTrackerBlue hover:bg-stockTrackerBlue-700 text-white font-semibold py-2 px-4 rounded-lg transition duration-200 cursor-pointer"

@@ -12,11 +12,11 @@ const toFormData = (user: ApiUser): FormData => ({
     postalCode: user.postal_code ?? '',
     unit: user.unit ?? '',
     city: user.city ?? '',
+    createdAt:user.created_at ?? ''
   });
 
 
-const userInfoService = async (token:string):Promise<any> => {
-    
+const userInfoService = async (token:string):Promise<any> => {    
 
     try{
         const {data:{user}}  = await axiosInstance.get<any>('secure-api',{
@@ -25,7 +25,7 @@ const userInfoService = async (token:string):Promise<any> => {
             }
         });
 
-        return toFormData(user[0]);
+        return toFormData(user);
 
     }catch(err:any){
         console.error("Failed to fetch top news:", err.message || err);
