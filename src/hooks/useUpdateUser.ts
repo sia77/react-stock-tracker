@@ -4,7 +4,7 @@ import { useAuth } from "./useAuth";
 import { ApiUser, FormData } from "@/Interfaces/db";
 
 export const useUpdateUser = () => {
-  const [loading, setLoading] = useState(false);
+  const [saving, setSaving] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const {getToken} = useAuth();
 
@@ -22,9 +22,7 @@ export const useUpdateUser = () => {
   });
 
   const updateUser = async (formData: any) => {
-
-    console.log("updateuser");
-    setLoading(true);
+    setSaving(true);
     setError(null);
     
     try {
@@ -44,15 +42,15 @@ export const useUpdateUser = () => {
             }
         });
 
-        console.log('response: ', response);
+        //console.log('response: ', response);
 
         return response.data;
     } catch (err: any) {
         setError(err.response?.data?.message || "Update failed");
     } finally {
-        setLoading(false);
+        setSaving(false);
     }
   };
 
-  return { updateUser, loading, error };
+  return { updateUser, saving, error };
 }

@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import { useEffect, useRef, useState } from 'react';
 import MobileMenu from './MobileMenu';
 import SignInSignOut from '../SignInSignOut';
+import { useAuth } from '@/hooks/useAuth';
 
 
 
@@ -12,6 +13,8 @@ const MainNavigation = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const menuRef = useRef<HTMLDivElement>(null);
     const iconRef = useRef<HTMLDivElement>(null);
+
+    const {isAuthenticated } = useAuth();
 
     useEffect(() => {
         const handleClickOutside = (event: MouseEvent) => {
@@ -77,14 +80,14 @@ const MainNavigation = () => {
                             Top News
                             </Link>
                         </li>
-                        <li>
+                        {isAuthenticated && <li>
                             <Link 
                             className="text-white no-underline px-3 py-2 rounded-md transition-colors hover:bg-stockTrackerBlue" 
                             to="/userDashboard"                            
                             >
                             User Dashboard
                             </Link>
-                        </li>
+                        </li>}
 
                         
                     </ul>
@@ -101,7 +104,7 @@ const MainNavigation = () => {
                     </div>
                 </nav>
             </div>
-            {isMenuOpen && <MobileMenu toggleMenu = {toggleMenu} iconRef ={iconRef} />}
+            {isMenuOpen && <MobileMenu toggleMenu = {toggleMenu} iconRef ={iconRef} isAuthenticated = {isAuthenticated} />}
         </>
     )
 }

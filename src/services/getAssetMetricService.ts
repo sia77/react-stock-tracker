@@ -10,7 +10,7 @@ export const getAssetMetricService = async (ticker:string):Promise<any> =>{
             }
         });
 
-        console.log(result.data)
+        //console.log(result.data)
 
         return result.data;
 

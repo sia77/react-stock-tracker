@@ -4,9 +4,10 @@ interface StatusMessageProps {
     query?: string;
     ticker?: string;
     type?:string;
+    saving?:string;
   }
   
-  const StatusMessage: React.FC<StatusMessageProps> = ({ loading, error, query, ticker, type }) => {
+  const StatusMessage: React.FC<StatusMessageProps> = ({ loading, error, query, ticker, type, saving }) => {
     if (loading) {
       return <div className="text-center text-[#596479] text-lg mt-10">Loading...</div>;
     }
@@ -21,6 +22,10 @@ interface StatusMessageProps {
 
     if (!ticker || !type){
       return <div className="text-center text-stockTrackerRed text-lg mt-10">Invalid URL: Missing ticker or type.</div>;
+    }
+
+    if (saving) {
+      return <div className="text-center text-[#596479] text-lg mt-10">Saving...</div>;
     }
        
   

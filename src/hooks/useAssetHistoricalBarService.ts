@@ -17,7 +17,7 @@ export const useAssetHistoricalBarService = (request:HistoricBarRequest) =>{
                 const result = await assetHistoricalBarService(request);    
                 setData(result);    
             }catch(err:any){
-                console.log("Historical Bar: ", err);
+                //console.log("Historical Bar: ", err);
                 setError(err.message);
             }finally{
                 setLoading(false);

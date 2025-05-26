@@ -1,6 +1,8 @@
 import { Link } from "react-router-dom";
+import SignInSignOut from "../SignInSignOut";
 
 const MobileMenu = (props:any) => {
+
     return (
         <div 
             ref={props.menuRef} 
@@ -16,6 +18,13 @@ const MobileMenu = (props:any) => {
                 {/* <li className="mb-3"><Link className="text-white no-underline" onClick={props.toggleMenu} to ='/services'>Services</Link></li> */}
                 <li className="mb-3">
                     <Link className="text-white text-xl no-underline" onClick={props.toggleMenu} to ='/news'>Top News</Link>
+                </li>
+
+                {props.isAuthenticated && <li className="mb-3">
+                    <Link className="text-white text-xl no-underline" onClick={props.toggleMenu} to="/userDashboard">User Dashboard</Link>
+                </li>}
+                <li className="mb-3 mt-3">
+                    <SignInSignOut text_size = "text-xl"/>
                 </li>
                 {/* <li><Link className="text-white no-underline" to = '/contact'>Contact Us</Link></li>              */}
             </ul> 

@@ -21,27 +21,30 @@ export default function UserSettingsForm() {
   });
 
   const [errors, setErrors] = useState<{ [K in keyof FormData]?: string }>({});
-
   const { data, loading, error } = useUserInfoService(); 
   
-  console.log("***********data: ", data);
-  
+ 
   useEffect(() => {
     if (data) {
       setForm(data);
     }
   }, [data]);
 
-  const { updateUser, loading:loadingUpdate, error:errorLoading } = useUpdateUser();
+  const { updateUser, saving, error:errorLoading } = useUpdateUser();
 
   if (loading || error || !data) {
     return <StatusMessage loading={loading} error={error} />;
   } 
 
+  if ( saving || errorLoading) {
+    return <StatusMessage loading={saving} error={errorLoading} />;
+  }
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setForm((prev) => ({ ...prev, [name]: value }));
   };
+  
 
   const validate = () => {
     const newErrors: typeof errors = {};
@@ -59,10 +62,8 @@ export default function UserSettingsForm() {
     e.preventDefault();
     if (!validate()) return;
 
-    updateUser(form);
-    
-    console.log("Saving user settings:", form);
-    // Call API or do something with the data
+    updateUser(form);    
+  
   };
 
   return (

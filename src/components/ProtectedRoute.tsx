@@ -9,7 +9,7 @@ const ProtectedRoute = ({ children }: { children: JSX.Element }) => {
 
   if (isLoading) {
     return <StatusMessage loading={isLoading} />;
-}
+  }
 
   if (!isAuthenticated) {
     // Redirect to 404 or some fallback route

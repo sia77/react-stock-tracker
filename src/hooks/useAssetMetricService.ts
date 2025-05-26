@@ -14,7 +14,7 @@ export const useAssetMetricService = (ticker:string) => {
             try{
                 setLoading(true);
                 const result = await getAssetMetricService(ticker);
-                console.log("hook: ", result);
+                //console.log("hook: ", result);
 
                 setData(result)
 

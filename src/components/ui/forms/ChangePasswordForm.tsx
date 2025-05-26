@@ -36,7 +36,7 @@ const ChangePasswordForm =() => {
     e.preventDefault();
     if (!validate()) return;
 
-    console.log("Changing password:", form);
+    //console.log("Changing password:", form);
     // Example API call here
     // await changePasswordAPI(form);
 

@@ -34,15 +34,15 @@ export const AssetDetail = () => {
 
 
 
-    console.log("searchData1213: ", searchData);
+    //console.log("searchData1213: ", searchData);
 
     const foundItem = searchData?.find((item:AssetData) => item.symbol.toUpperCase() === ticker.toUpperCase())
 
-    console.log("metricData: ", metricData);
+    // console.log("metricData: ", metricData);
 
-    console.log("data: ", dataBar);
+    // console.log("data: ", dataBar);
 
-    console.log("foundItem: ", foundItem);
+    // console.log("foundItem: ", foundItem);
 
     const { bars }= dataBar;
 
@@ -66,13 +66,10 @@ export const AssetDetail = () => {
         peTTM: metricData.metric.peTTM,
         dividendYieldIndicatedAnnual: metricData.metric.dividendYieldIndicatedAnnual,
         dividendPerShareTTM: metricData.metric.dividendPerShareTTM,
-        
-
 
     };
 
-    console.log("metricPackage: ", metricPackage);
-
+    //console.log("metricPackage: ", metricPackage);
   
     return (
         <>
