@@ -17,7 +17,8 @@ export default function UserSettingsForm() {
     postalCode:"",
     unit:"",
     city:"",
-    createdAt:''
+    createdAt:'',
+    country:''
   });
 
   const [errors, setErrors] = useState<{ [K in keyof FormData]?: string }>({});
@@ -53,6 +54,7 @@ export default function UserSettingsForm() {
     if (!form.city.trim()) newErrors.city = "City is required.";
     if (!form.state_province.trim()) newErrors.state_province = "Province/State is required.";
     if (!form.postalCode.trim()) newErrors.postalCode = "Postal/Zip code is required.";
+    if (!form.country.trim()) newErrors.postalCode = "Country is required.";
     // Optional: Add regex/email/phone format validation here
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
@@ -204,6 +206,20 @@ export default function UserSettingsForm() {
             } rounded-md focus:ring-blue-500 focus:border-blue-500`}
           />
           {errors.postalCode && <p className="text-sm text-stockTrackerRed mt-1">{errors.postalCode}</p>}
+        </div>
+
+        <div>
+          <label className="block text-sm font-medium text-gray-700">Country</label>
+          <input
+            type="text"
+            name="country"
+            value={form.country}
+            onChange={handleChange}
+            className={`mt-1 block w-full px-4 py-2 border ${
+              errors.country ? "border-stockTrackerRed" : ""
+            } rounded-md focus:ring-blue-500 focus:border-blue-500`}
+          />
+          {errors.country && <p className="text-sm text-stockTrackerRed mt-1">{errors.country}</p>}
         </div>
       </div>
       <button

@@ -9,6 +9,7 @@ export interface FormData {
     state_province: string;
     postalCode: string;
     createdAt:string;
+    country:string;
 }
 
 export interface ApiUser {    
@@ -23,4 +24,5 @@ export interface ApiUser {
     postal_code: string | null;
     //auth0_sub: string;
     created_at: string;
+    country:string;
 }

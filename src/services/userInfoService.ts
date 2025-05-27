@@ -12,7 +12,8 @@ const toFormData = (user: ApiUser): FormData => ({
     postalCode: user.postal_code ?? '',
     unit: user.unit ?? '',
     city: user.city ?? '',
-    createdAt:user.created_at ?? ''
+    createdAt:user.created_at ?? '',
+    country:user.country ?? ''
   });
 
 

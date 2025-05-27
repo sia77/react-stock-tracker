@@ -8,7 +8,7 @@ import './index.css'
 import App from './App.tsx'
 
 createRoot(document.getElementById('root')!).render(
-  // <StrictMode>
+  <StrictMode>
     <BrowserRouter>
       <Auth0Provider
       domain={import.meta.env.VITE_AUTH0_DOMAIN}
@@ -22,5 +22,5 @@ createRoot(document.getElementById('root')!).render(
     </Auth0Provider>
 
     </BrowserRouter>    
-  // </StrictMode>
+  </StrictMode>
 )

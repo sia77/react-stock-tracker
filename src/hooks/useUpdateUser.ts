@@ -18,7 +18,8 @@ export const useUpdateUser = () => {
     postal_code: form.postalCode,
     unit: form.unit,
     city: form.city,
-    created_at: form.createdAt
+    created_at: form.createdAt,
+    country:form.country
   });
 
   const updateUser = async (formData: any) => {
