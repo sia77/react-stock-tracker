@@ -4,9 +4,22 @@ import Footer from './components/Footer'
 import MainNavigation from './components/main-navigation'
 import SearchBar from './components/SearchBar'
 import AppRoutes from './routes/AppRoutes'
+import { useEffect } from 'react'
+import { initGA, logPageView } from './utils/google/analytics'
+import { useLocation } from 'react-router-dom'
 
 
 function App() {
+
+  const location = useLocation();
+
+  useEffect(() => {
+    initGA();
+  }, []);
+
+  useEffect(() => {
+    logPageView(location.pathname + location.search);
+  }, [location]);
 
   return (
     <>
