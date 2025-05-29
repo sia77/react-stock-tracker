@@ -13,10 +13,8 @@ const useStockPerformance = () => {
   return useQuery({
     queryKey: ['stockPerformance'],
     queryFn: fetchStockPerformance,
-    staleTime: 60 * 1000,
-    gcTime: 5 * 60 * 1000,
-    retry: 2,
-    refetchOnWindowFocus: false,
+    refetchOnMount: true, // Fetch in the background when the page is loaded
+    refetchOnWindowFocus: true, // Refetch if user returns to the tab
   });
 };
 

@@ -5,8 +5,7 @@ import { createSyncStoragePersister } from '@tanstack/query-sync-storage-persist
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
-      staleTime: 60 * 1000, // Cached data stays fresh for 1 min
-      gcTime: 5 * 60 * 1000, // Data removed after 5 min if not used
+      staleTime: 1000 * 60 * 60 * 24, // 24 hours (data stays fresh for a day)
     },
   },
 });
