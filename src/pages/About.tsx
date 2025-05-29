@@ -4,7 +4,7 @@ export default function About(){
     return (
         <>
             <Card className="mb-4 p-4 border rounded-xl shadow-none">
-                <CardContent className="">
+                <CardContent className="px-2 md:px-6">
                     <main>
                         <article>
                         <h2 className="font-bold text-2xl mb-[30px]">About StockTracker</h2>

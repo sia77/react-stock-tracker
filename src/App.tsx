@@ -31,7 +31,7 @@ function App() {
           <SearchBar />
         </header>
     
-        <main className="flex-1 mx-4 ">
+        <main className="flex-1 mx-2 md:mx-4">
 
           <div className="max-w-[1220px] mx-auto py-3">      
             <AppRoutes />

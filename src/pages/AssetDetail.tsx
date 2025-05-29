@@ -75,8 +75,8 @@ export const AssetDetail = () => {
         <>
             <div>
             <Card className='mb-4 p-4 border rounded-xl shadow-none'>
-                <CardContent>
-                    <h2 className="pl-[16px]">
+                <CardContent className='px-2'>
+                    <h2 className="pl-0">
                         <div className="flex items-center">
                             <div className="mr-2">
                                 <a target="_blank" href={foundItem?.weburl}>
@@ -101,14 +101,15 @@ export const AssetDetail = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 items-center">
                 <div className='col-span-2 md:col-span-1'>
                     <Card className='mb-4 p-4 border rounded-xl shadow-none'>
-                        <CardContent>
+                        <CardContent className='@container px-1 @sm:px-2 @md:px-6 mt-3 @md:mt-0'>
                             <Chart data={bars} height={350} />
                         </CardContent>
                     </Card>
                 </div>
                 <div className='col-span-2 md:col-span-1'>
                     <Card className='mb-4 p-4 border rounded-xl shadow-none'>
-                        <CardContent>
+                        <CardContent className='@container px-1 text-xs @sm:px-2 @md:px-6 mt-3 @md:mt-0'>
+                                                
                             <MetricsTable metricPackage = {metricPackage} height={365}  />
                         </CardContent>
                     </Card>                    

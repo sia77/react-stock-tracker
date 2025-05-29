@@ -52,7 +52,7 @@ const SearchBar = () => {
 
 
     return (
-        <div className="flex justify-center mx-4">
+        <div className="flex justify-center mx-2 md:mx-4">
             <div className='w-[1220px] py-3 my-6 relative'>
                 <span className="absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-400">
                     { !query ? 

@@ -28,7 +28,7 @@ const SearchResults = () => {
                 const assetType = item?.type === "Common Stock" ? 'stock' : item?.type;
                 return (                    
                     <Card key={item.id} className="mb-4 p-4 border rounded-xl shadow-none transform transition-all hover:-translate-y-1 hover:scale-[1.02] hover:shadow-lg">
-                        <CardContent className="grid grid-cols-2 md:grid-cols-4 gap-4 items-center">
+                        <CardContent className="grid grid-cols-2 md:grid-cols-4 gap-4 items-center px-2 md:px-6">
                             <div>
                                 <h2 className="text-lg font-semibold">{item.symbol}</h2>
                                 <p className="text-sm text-gray-500">{item.name}</p>
