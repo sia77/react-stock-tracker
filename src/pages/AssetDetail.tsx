@@ -108,7 +108,7 @@ export const AssetDetail = () => {
                 </div>
                 <div className='col-span-2 md:col-span-1'>
                     <Card className='mb-4 p-4 border rounded-xl shadow-none'>
-                        <CardContent className='@container px-1 text-xs @sm:px-2 @md:px-6 mt-3 @md:mt-0'>
+                        <CardContent className='@container px-1 @sm:px-2 @md:px-6 mt-3 @md:mt-0'>
                                                 
                             <MetricsTable metricPackage = {metricPackage} height={365}  />
                         </CardContent>
