@@ -3,7 +3,7 @@ import MetricsTable from '@/components/MetricsTable';
 import StatusMessage from '@/components/StatusMessage';
 import { Card, CardContent } from '@/components/ui/card';
 import { useAssetHistoricalBarService } from '@/hooks/useAssetHistoricalBarService';
-import { useAssetMetricService } from '@/hooks/useAssetMetricService';
+import useAssetMetricResult  from '@/hooks/useAssetMetricResult';
 import { useHistoricBarRequest } from '@/hooks/useHistoricBarRequest';
 import useSearchResult from '@/hooks/useSearchResult';
 import { AssetData } from '@/Interfaces/assets';
@@ -20,16 +20,28 @@ export const AssetDetail = () => {
     const request = useHistoricBarRequest(ticker);
 
     const { data:dataBar, loading:loadingBar, error:errorBar} = useAssetHistoricalBarService(request);
-    const { data:metricData, loading:metricLoading, error:metricError} = useAssetMetricService(ticker.toUpperCase());
+    const { data:metricData, isLoading:metricLoading, error:metricError} = useAssetMetricResult(ticker.toUpperCase());
     const { data:searchData, isLoading:searchLoading, error:searchError} = useSearchResult(ticker.toUpperCase());
     
     // Handle all message states early
     if (loadingBar || metricLoading || searchLoading) {
-        return <StatusMessage loading={loadingBar || metricLoading || searchLoading} />;
+        return <StatusMessage loading={true} />;
     }
     
-    if (errorBar || metricError || searchError?.message) {
-        return <StatusMessage error={errorBar || metricError} />;
+    if (errorBar || metricError || searchError) {
+
+        const rawError = errorBar || metricError || searchError;
+
+        const errorMessage =
+          typeof rawError === 'string'
+            ? rawError
+            : rawError instanceof Error
+            ? rawError.message
+            : null;
+        
+        
+        return <StatusMessage error={errorMessage} />;
+        
     }
 
 
@@ -38,7 +50,7 @@ export const AssetDetail = () => {
 
     const foundItem = searchData?.find((item:AssetData) => item.symbol.toUpperCase() === ticker.toUpperCase())
 
-    // console.log("metricData: ", metricData);
+    //console.log("metricData: ", metricData);
 
     // console.log("data: ", dataBar);
 

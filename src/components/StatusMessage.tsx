@@ -1,6 +1,6 @@
 interface StatusMessageProps {
     loading?: boolean;
-    error?: string | null;
+    error?: string | null | undefined;
     query?: string;
     ticker?: string;
     type?:string;
