@@ -2,7 +2,7 @@ import Chart from '@/components/Chart';
 import MetricsTable from '@/components/MetricsTable';
 import StatusMessage from '@/components/StatusMessage';
 import { Card, CardContent } from '@/components/ui/card';
-import { useAssetHistoricalBarService } from '@/hooks/useAssetHistoricalBarService';
+import { useAssetHistoricalBar } from '@/hooks/useAssetHistoricalBar';
 import useAssetMetricResult  from '@/hooks/useAssetMetricResult';
 import { useHistoricBarRequest } from '@/hooks/useHistoricBarRequest';
 import useSearchResult from '@/hooks/useSearchResult';
@@ -19,7 +19,7 @@ export const AssetDetail = () => {
     
     const request = useHistoricBarRequest(ticker);
 
-    const { data:dataBar, loading:loadingBar, error:errorBar} = useAssetHistoricalBarService(request);
+    const { data:dataBar, isLoading:loadingBar, error:errorBar} = useAssetHistoricalBar(request);
     const { data:metricData, isLoading:metricLoading, error:metricError} = useAssetMetricResult(ticker.toUpperCase());
     const { data:searchData, isLoading:searchLoading, error:searchError} = useSearchResult(ticker.toUpperCase());
     
@@ -52,11 +52,11 @@ export const AssetDetail = () => {
 
     //console.log("metricData: ", metricData);
 
-    // console.log("data: ", dataBar);
+     //console.log("dataBar: ", dataBar);
 
     // console.log("foundItem: ", foundItem);
 
-    const { bars }= dataBar;
+    const bars = dataBar?.bars;
 
 
     const metricPackage = {
