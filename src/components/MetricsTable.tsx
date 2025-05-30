@@ -60,8 +60,8 @@ const MetricsTable = ({metricPackage, height}:any) => {
             } 
 
             { metricPackage?.shareOut && (
-                <div className='grid grid-cols-4 gap-1 items-center text-sm border-b border-default'>
-                    <div className="pl-2 col-span-3">Shares Out</div>
+                <div className='grid grid-cols-2 gap-1 items-center text-sm border-b border-default'>
+                    <div className="pl-2 col-span-1">SO</div>
                     <div className="font-semibold text-right pr-2 col-span-1">{largeNumberFormat(metricPackage.shareOut, 'M')}</div>
                 </div>
                 )
