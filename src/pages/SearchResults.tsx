@@ -10,10 +10,13 @@ const SearchResults = () => {
     const query = searchParams.get('q') ?? '';
     const { data:searchResult, error, isLoading:loading } = useSearchResult(query); 
 
-
     // Handle all message states early
     if (loading || error || !query.trim()) {
         return <StatusMessage loading={loading} error={error?.message} query={query} />;
+    }
+
+    if(searchResult && searchResult.length === 0 ){
+        return <StatusMessage data={true}  />;
     }
 
     const formatNumber = (num: number) => {

@@ -23,6 +23,14 @@ const SearchBar = () => {
         navigate(`/search`);
     }
 
+    const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const value = e.target.value.toUpperCase().trim();
+        // Allow only letters and numbers (alphanumeric)
+        if (/^[A-Z0-9]*$/.test(value)) {
+          setQuery(value);
+        }
+      };
+
 
     useEffect(() => {
         const query = debouncedQuery.trim();
@@ -65,7 +73,8 @@ const SearchBar = () => {
                     placeholder="Search by Ticker Symbol"
                     className="bg-card h-[56px] px-5 rounded-xl border shadow-none focus:outline-none transition-all text-gray-700 placeholder-gray-400 focus-visible:ring-[0px]"
                     value={query}
-                    onChange={e => setQuery(e.target.value)}
+                    maxLength={5}
+                    onChange={handleInputChange}
                 />    
             </div>
         </div>

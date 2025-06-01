@@ -5,9 +5,13 @@ interface StatusMessageProps {
     ticker?: string;
     type?:string;
     saving?:string;
+    data?:boolean;
   }
   
-  const StatusMessage: React.FC<StatusMessageProps> = ({ loading, error, query, ticker, type, saving }) => {
+  const StatusMessage: React.FC<StatusMessageProps> = ({ loading, error, query, ticker, type, saving, data }) => {
+    if (data) {
+      return <div className="text-center text-stockTrackerRed text-lg mt-10">No matching symbol found on the US exchange...</div>;
+    }
     if (loading) {
       return <div className="text-center text-[#596479] text-lg mt-10">Loading...</div>;
     }
