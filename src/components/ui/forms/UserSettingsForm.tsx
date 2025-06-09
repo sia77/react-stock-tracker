@@ -43,7 +43,8 @@ export default function UserSettingsForm() {
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
-    setForm((prev) => ({ ...prev, [name]: value }));
+    console.log("name: ", name);
+    setForm((prev) => ({ ...prev, [name]: value.trim() }));
   };
   
 
@@ -103,6 +104,8 @@ export default function UserSettingsForm() {
           <input
             type="text"
             name="firstName"
+            pattern="[a-zA-Z\s'-]+"
+            maxLength={50}
             value={form.firstName}
             onChange={handleChange}
             className={`mt-1 block w-full px-4 py-2 border ${
@@ -117,6 +120,8 @@ export default function UserSettingsForm() {
           <input
             type="text"
             name="lastName"
+            pattern="[a-zA-Z\s'-]+"
+            maxLength={50}
             value={form.lastName}
             onChange={handleChange}
             className={`mt-1 block w-full px-4 py-2 border ${

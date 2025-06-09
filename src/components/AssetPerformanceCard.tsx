@@ -16,7 +16,7 @@ export const AssetPerformanceCard = ({title, data, maxItems, alignment}:AssetLis
     return (
 
         <Card className={`w-[300px] rounded-xl py-0 gap-4 shadow-none ${alignment}`}>
-            <CardHeader className={`bg-stockTrackerBlack text-white p-[16px] gap-0 rounded-xl`}>
+            <CardHeader className={`bg-stockTrackerBlack text-white p-[16px] gap-0 rounded-t-xl`}>
                 <h4 className="text-white">{title}</h4>                     
             </CardHeader>
             <CardContent className="px-2">

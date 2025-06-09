@@ -73,7 +73,7 @@ const SearchBar = () => {
                     placeholder="Search by Ticker Symbol"
                     className="bg-card h-[56px] px-5 rounded-xl border shadow-none focus:outline-none transition-all text-gray-700 placeholder-gray-400 focus-visible:ring-[0px]"
                     value={query}
-                    maxLength={5}
+                    maxLength={7}
                     onChange={handleInputChange}
                 />    
             </div>
