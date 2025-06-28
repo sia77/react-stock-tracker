@@ -21,3 +21,7 @@ export interface AssetData {
     weburl:string;
     logo:string;
   }
+
+  export interface SearchResponse{
+    result:AssetData[];
+  }

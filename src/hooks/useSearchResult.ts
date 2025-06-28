@@ -1,12 +1,12 @@
 
-import { AssetData } from "@/Interfaces/assets";
+import { AssetData, SearchResponse } from "@/Interfaces/assets";
 import axiosInstance from "@/api/axiosInstance";
 import { useQuery } from "@tanstack/react-query";
 
 
 const fetchStockPerformance = async (query:string): Promise<AssetData[]> => {
-    const { data } = await axiosInstance.get<AssetData[]>(`searchAssets?search=${query}`);         
-    return data;
+    const { data } = await axiosInstance.get<SearchResponse>(`searchAssets?search=${query}`);
+    return data.result;
 };
 const useSearchResult = (query: string) => {
     return useQuery({
