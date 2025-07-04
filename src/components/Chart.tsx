@@ -5,7 +5,9 @@ import ReactApexChart from "react-apexcharts";
 
 const Chart = ({data, height}:any) => {
 
-    const pairs = data.map((item:BarData ) => ({
+  const safeData = Array.isArray(data) ? data : [];
+  
+    const pairs = safeData.map((item:BarData ) => ({
         x: new Date(item.t).getTime(), // recommended for ApexCharts
         y: item.c,
       }));
@@ -13,6 +15,16 @@ const Chart = ({data, height}:any) => {
     const options: ApexOptions = {
         chart: {
           type: 'line',
+        },
+        noData: {
+          text: 'No data available',
+          align: 'center',
+          verticalAlign: 'middle',
+          style: {
+            color: '#d91818',
+            fontSize: '20px',
+            fontFamily: 'Helvetica, Arial, sans-serif',
+          }
         },
         xaxis: {
             type: 'datetime', // this is key
@@ -62,6 +74,7 @@ const Chart = ({data, height}:any) => {
 
 
     return(
+
         <ReactApexChart options={options} series={series} type="line" height={height} />
     )
 

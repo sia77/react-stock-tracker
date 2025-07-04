@@ -29,7 +29,7 @@ const SearchBar = () => {
         if (/^[A-Z0-9]*$/.test(value)) {
           setQuery(value);
         }
-      };
+    };
 
 
     useEffect(() => {
@@ -56,7 +56,7 @@ const SearchBar = () => {
             setQuery('');
         }
         
-      }, [location.pathname]);
+    }, [location.pathname]);
 
 
     return (

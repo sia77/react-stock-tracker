@@ -5,6 +5,11 @@ import { useQuery } from "@tanstack/react-query";
 
 
 const fetchStockPerformance = async (query:string): Promise<AssetData[]> => {
+    
+    if(!query.trim()){
+        return [];
+    }
+
     const { data } = await axiosInstance.get<SearchResponse>(`searchAssets?search=${query}`);
     return data.result;
 };

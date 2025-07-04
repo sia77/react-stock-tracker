@@ -36,6 +36,7 @@ const SearchResults = () => {
                                 <h2 className="text-lg font-semibold">{item.symbol}</h2>
                                 <p className="text-sm text-gray-500">{item.name}</p>
                             </div>
+                            {item.close !== undefined && (
                             <div>
                                 <p className="text-sm text-gray-600">Close</p>
                                 <p className="text-base font-medium flex items-center gap-1">
@@ -49,6 +50,8 @@ const SearchResults = () => {
                                     )}
                                 </p>
                             </div>
+                            )}
+
                             <div>
                                 <p className="text-sm text-gray-600">Market Cap</p>
                                 <p className="text-base font-medium">{largeNumberFormat(item.marketCap, 'M') }</p>
