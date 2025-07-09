@@ -1,4 +1,5 @@
 import Chart from '@/components/Chart';
+import { CompanyNews } from '@/components/CompanyNews';
 import MetricsTable from '@/components/MetricsTable';
 import StatusMessage from '@/components/StatusMessage';
 import { Card, CardContent } from '@/components/ui/card';
@@ -8,16 +9,17 @@ import { useHistoricBarRequest } from '@/hooks/useHistoricBarRequest';
 import useSearchResult from '@/hooks/useSearchResult';
 import { AssetData } from '@/Interfaces/assets';
 import { currencySymbol } from '@/utils/formaters/currencySymbol';
+import { toBCDate } from '@/utils/formaters/DateConvert';
 import { useParams } from 'react-router-dom';
 
 
 export const AssetDetail = () => {
 
     const { type, ticker } = useParams();
-
-    if(!ticker || !type) return <StatusMessage ticker={ticker}  type = {type} />;
+     if(!ticker || !type) return <StatusMessage ticker={ticker}  type = {type} />;
     
     const request = useHistoricBarRequest(ticker);
+    const nowTimeStamp = Math.floor(Date.now() / 1000);
 
     const { data:dataBar, isLoading:loadingBar, error:errorBar} = useAssetHistoricalBar(request);
     const { data:metricData, isLoading:metricLoading, error:metricError} = useAssetMetricResult(ticker.toUpperCase());
@@ -126,6 +128,14 @@ export const AssetDetail = () => {
                         </CardContent>
                     </Card>                    
                 </div>
+            </div>
+            <div  className='col-span-2'>
+                <Card className='mb-4 p-4 border rounded-xl shadow-none'>
+                        <CardContent className='@container px-1 @sm:px-2 @md:px-6 mt-3 @md:mt-0'>                                                
+                            <CompanyNews symbol={ticker} from ={toBCDate(nowTimeStamp)} to = {toBCDate(nowTimeStamp)} />
+                        </CardContent>
+                    </Card> 
+                
             </div>
         </>
 
