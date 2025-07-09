@@ -26,7 +26,7 @@ const SearchBar = () => {
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const value = e.target.value.toUpperCase().trim();
         // Allow only letters and numbers (alphanumeric)
-        if (/^[A-Z0-9]*$/.test(value)) {
+        if (/^[A-Z0-9\.]*$/.test(value)) {
           setQuery(value);
         }
     };

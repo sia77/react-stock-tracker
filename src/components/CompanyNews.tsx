@@ -7,8 +7,6 @@ import { toBCDate } from "@/utils/formaters/DateConvert";
 export const CompanyNews:React.FC<any> = ({symbol, from, to}) => {
 
     const {isLoading, newsList, error} = useCompanyNews(symbol, from, to);
-    console.log("newsList:", newsList);
-
 
     if (isLoading) {
         return <StatusMessage loading={true} />;
@@ -21,7 +19,7 @@ export const CompanyNews:React.FC<any> = ({symbol, from, to}) => {
 
     return (
         <>
-            <div>News</div>
+            <div className="font-medium text-[20px] leading-[32px]">News</div>
 
             {!newsList.length && <div>No news items at this time.</div> }
             <div >
@@ -29,7 +27,6 @@ export const CompanyNews:React.FC<any> = ({symbol, from, to}) => {
                     newsList.map(
                         (el:NewsArticle) => (
 
-// border rounded-lg shadow-sm hover:shadow-md transition-shadow duration-200
                             <article key={el.id} className="w-full mx-auto p-4 ">
                                 <div className="flex space-x-4">
                                     
