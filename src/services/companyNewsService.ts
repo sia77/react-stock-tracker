@@ -1,9 +1,18 @@
 import axiosInstance from "@/api/axiosInstance";
 import { CompanyNewsResponse } from "@/Interfaces/news";
 
+const cache = new Map();
+
 const companyNewsService = async (symbol:string, from:string,to:string):Promise<CompanyNewsResponse> => {
 
-    try{
+    
+    const cacheKey = `${symbol}_${from}_${to}`;
+
+    if(cache.has(cacheKey)){
+        return cache.get(cacheKey);
+    }
+
+    try{        
 
         const {data} = await axiosInstance.get<CompanyNewsResponse>('companyNews', {
             params:{
@@ -12,6 +21,7 @@ const companyNewsService = async (symbol:string, from:string,to:string):Promise<
                 to:to
             }
         });
+        cache.set(cacheKey, data);
         return data;
 
     }

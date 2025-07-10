@@ -16,7 +16,7 @@ import { useParams } from 'react-router-dom';
 export const AssetDetail = () => {
 
     const { type, ticker } = useParams();
-     if(!ticker || !type) return <StatusMessage ticker={ticker}  type = {type} />;
+    if(!ticker || !type) return <StatusMessage ticker={ticker}  type = {type} />;
     
     const request = useHistoricBarRequest(ticker);
     const nowTimeStamp = Math.floor(Date.now() / 1000);
@@ -56,7 +56,7 @@ export const AssetDetail = () => {
 
      //console.log("dataBar: ", dataBar);
 
-    // console.log("foundItem: ", foundItem);
+    //console.log("foundItem: ", foundItem);
 
     const bars = dataBar?.bars;
 
@@ -88,29 +88,28 @@ export const AssetDetail = () => {
     return (
         <>
             <div>
-            <Card className='mb-4 p-4 border rounded-xl shadow-none'>
-                <CardContent className='px-2'>
-                    <h2 className="pl-0">
-                        <div className="flex items-center">
-                            <div className="mr-2">
-                                <a target="_blank" href={foundItem?.weburl}>
-                                    <div className="bg-black text-white text-[12px] font-semibold w-[45px] h-[45px] rounded-full border-2 border-stockTrackerBlue flex justify-center items-center"> 
-                                        {foundItem?.symbol} 
-                                    </div>
-                                </a>
+                <Card className='mb-4 p-4 border rounded-xl shadow-none'>
+                    <CardContent className='px-2'>
+                        <h2 className="pl-0">
+                            <div className="flex items-center">
+                                <div className="mr-2">
+                                    <a target="_blank" href={foundItem?.weburl}>
+                                        <div className="bg-black text-white text-[12px] font-semibold w-[45px] h-[45px] rounded-full border-2 border-stockTrackerBlue flex justify-center items-center"> 
+                                            {foundItem?.symbol} 
+                                        </div>
+                                    </a>
+                                </div>
+                                <div className="font-medium text-[20px] leading-[32px]"> 
+                                {foundItem?.name}
+                                </div>
                             </div>
-                            <div className="font-medium text-[20px] leading-[32px]"> 
-                            {foundItem?.name}
+                            <div className="flex items-baseline">
+                                <div className="mr-1 font-medium text-[20px] leading-[32px]">{currencySymbol(foundItem?.currency) || '$'}{foundItem?.close}</div>
+                                <div className="text-sm">{foundItem?.currency}</div>
                             </div>
-                        </div>
-                        <div className="flex items-baseline">
-                            <div className="mr-1 font-medium text-[20px] leading-[32px]">{currencySymbol(foundItem?.currency) || '$'}{foundItem?.close}</div>
-                            <div className="text-sm">{foundItem?.currency}</div>
-                        </div>
-                    </h2>
-                </CardContent>
-            </Card>
-
+                        </h2>
+                    </CardContent>
+                </Card>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 items-center">
                 <div className='col-span-2 md:col-span-1'>
@@ -131,14 +130,12 @@ export const AssetDetail = () => {
             </div>
             <div  className='col-span-2'>
                 <Card className='mb-4 p-4 border rounded-xl shadow-none'>
-                        <CardContent className='@container px-1 @sm:px-2 @md:px-6 mt-3 @md:mt-0'>                                                
-                            <CompanyNews symbol={ticker} from ={toBCDate(nowTimeStamp)} to = {toBCDate(nowTimeStamp)} />
-                        </CardContent>
-                    </Card> 
-                
+                    <CardContent className='@container px-1 @sm:px-2 @md:px-6 mt-3 @md:mt-0'>                                                
+                        <CompanyNews symbol={ticker} from ={toBCDate(nowTimeStamp)} to = {toBCDate(nowTimeStamp)} />
+                    </CardContent>
+                </Card>
             </div>
         </>
-
 
     );
   };

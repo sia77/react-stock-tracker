@@ -25,6 +25,4 @@ export const topNewsService = async ():Promise<TopNewsItem[]> => {
         console.error("Failed to fetch top news:", err.message || err);
         throw new Error("Could not fetch top news data");
     }
-
-
 }
