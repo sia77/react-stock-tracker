@@ -31,7 +31,7 @@ export const useUpdateUser = () => {
         const token = await getToken(
             {
             authorizationParams: {
-              audience: 'https://stocktracker-react.netlify.app/v1/api/',
+              audience: 'https://stocktracker-api',
               scope: 'update:data'
             },
           }

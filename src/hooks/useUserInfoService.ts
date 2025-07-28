@@ -19,7 +19,7 @@ export const useUserInfoService = () =>{
                 const t = await getToken(
                     {
                     authorizationParams: {
-                      audience: 'https://stocktracker-react.netlify.app/v1/api/',
+                      audience: 'https://stocktracker-api',
                       scope: 'read:data'
                     },
                   }
