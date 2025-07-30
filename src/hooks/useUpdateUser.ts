@@ -47,6 +47,7 @@ export const useUpdateUser = () => {
 
         return response.data;
     } catch (err: any) {
+        console.error("Failed to update user:", err.message || err);
         setError(err.response?.data?.message || "Update failed");
     } finally {
         setSaving(false);

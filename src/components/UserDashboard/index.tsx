@@ -8,7 +8,6 @@ const UserDashboard = () =>{
 
     const tabContent:React.ReactNode = UserSettingsForm();
     //const changePassword:React.ReactNode = ChangePasswordForm();
-
     return (
         <>
             <Tabs

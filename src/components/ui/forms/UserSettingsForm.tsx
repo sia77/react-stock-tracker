@@ -22,8 +22,7 @@ export default function UserSettingsForm() {
   });
 
   const [errors, setErrors] = useState<{ [K in keyof FormData]?: string }>({});
-  const { data, loading, error } = useUserInfoService(); 
-  
+  const { data, loading, error } = useUserInfoService();
  
   useEffect(() => {
     if (data) {
@@ -34,6 +33,7 @@ export default function UserSettingsForm() {
   const { updateUser, saving, error:errorLoading } = useUpdateUser();
 
   if (loading || error || !data) {
+
     return <StatusMessage loading={loading} error={error} />;
   } 
 
@@ -43,7 +43,7 @@ export default function UserSettingsForm() {
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
-    console.log("name: ", name);
+    //console.log("name: ", name);
     setForm((prev) => ({ ...prev, [name]: value.trim() }));
   };
   
@@ -104,7 +104,7 @@ export default function UserSettingsForm() {
           <input
             type="text"
             name="firstName"
-            pattern="[a-zA-Z\s'-]+"
+            pattern="[a-zA-Z\s'\-]+"
             maxLength={50}
             value={form.firstName}
             onChange={handleChange}
@@ -120,7 +120,7 @@ export default function UserSettingsForm() {
           <input
             type="text"
             name="lastName"
-            pattern="[a-zA-Z\s'-]+"
+            pattern="[a-zA-Z\s'\-]+"
             maxLength={50}
             value={form.lastName}
             onChange={handleChange}

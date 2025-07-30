@@ -1,6 +1,6 @@
 interface StatusMessageProps {
     loading?: boolean;
-    error?: string | null | undefined;
+    error?: string | null | undefined | any;
     query?: string;
     ticker?: string;
     type?:string;
@@ -17,7 +17,8 @@ interface StatusMessageProps {
     }
   
     if (error) {
-      return <div className="text-center text-stockTrackerRed text-lg mt-10">{error}</div>;
+      const message = error instanceof Error ? error.message : String(error);
+      return <div className="text-center text-stockTrackerRed text-lg mt-10">{message}</div>;
     }
   
     if (query !== undefined && !query.trim()) {

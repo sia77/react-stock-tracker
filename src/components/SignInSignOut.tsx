@@ -5,7 +5,13 @@ const SignInSignOut = ({ text_size }: { text_size?: string }) => {
   const {loginWithPopup, isAuthenticated, logout } = useAuth();
 
   const handleLogin = async () => {
-    await loginWithPopup();  // Authenticates user without redirecting    
+    await loginWithPopup({
+    authorizationParams: {
+        audience: 'https://stocktracker-api',
+        scope: 'read:data ',
+        ...(import.meta.env.DEV ? { prompt: 'consent' } : {})
+      },
+    });  // Authenticates user without redirecting    
   };
 
   const handleLogout = async () =>{

@@ -17,7 +17,7 @@ const toFormData = (user: ApiUser): FormData => ({
   });
 
 
-const userInfoService = async (token:string):Promise<any> => {    
+const userInfoService = async (token:string):Promise<any> => { 
 
     try{
         const {data:{user}}  = await axiosInstance.get<any>('secure-api',{
@@ -25,14 +25,12 @@ const userInfoService = async (token:string):Promise<any> => {
                 Authorization: `Bearer ${token}`,
             }
         });
-
         return toFormData(user);
 
     }catch(err:any){
         console.error("Failed to fetch top news:", err.message || err);
         throw new Error("Could not fetch userInfo");
-    }    
-
+    }
 }
 
 export default userInfoService;
